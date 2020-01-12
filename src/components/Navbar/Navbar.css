@@ -1,0 +1,27 @@
+.navbar {
+	background: transparent;
+	border-radius: 5px;
+}
+
+.navbar-brand {
+	padding: 8px;
+}
+
+.navbar-brand img {
+	fill: red !important;
+	width: 10rem;
+}
+
+.navbar a {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+}
+
+.navbar a:hover {
+	color: #11e996;
+}
+
+.navbar .navbar-toggler-icon {
+	color: white;
+	background-color: red;
+}
