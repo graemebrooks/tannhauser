@@ -1,6 +1,7 @@
 .navbar {
 	background: transparent;
-	border-radius: 5px;
+	/* background: rgb(14, 212, 136);
+	background: radial-gradient(circle, rgba(14, 212, 136, 1) 54%, rgba(98, 185, 196, 1) 100%); */
 }
 
 .navbar-brand {
@@ -19,9 +20,4 @@
 
 .navbar a:hover {
 	color: #11e996;
-}
-
-.navbar .navbar-toggler-icon {
-	color: white;
-	background-color: red;
 }

@@ -2,14 +2,17 @@ import React from 'react';
 import './Navbar.css';
 import logo from '../../thtransparent.svg';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
 	render() {
 		return (
 			<nav class="navbar navbar-expand-lg">
-				<a class="navbar-brand" href="#">
-					<img src={logo} />
-				</a>
+				<Link to="/" style={{ textDecoration: 'none' }}>
+					<a class="navbar-brand" href="#">
+						<img src={logo} />
+					</a>
+				</Link>
 				<button
 					class="navbar-toggler"
 					type="button"
@@ -24,16 +27,20 @@ class Navbar extends React.Component {
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								Home <span class="sr-only">(current)</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Link
-							</a>
-						</li>
+						<Link to="/movieDetail" style={{ textDecoration: 'none' }}>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">
+									Movie Detail <span class="sr-only">(current)</span>
+								</a>
+							</li>
+						</Link>
+						<Link to="/myMovies" style={{ textDecoration: 'none' }}>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									My Movies
+								</a>
+							</li>
+						</Link>
 						<li class="nav-item dropdown">
 							<a
 								class="nav-link dropdown-toggle"
