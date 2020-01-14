@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
@@ -48,3 +49,7 @@ function MovieSearchCard(props) {
 	);
 }
 export default MovieSearchCard;
+
+MovieSearchCard.propTypes = {
+	movie: PropTypes.object.isRequired
+};

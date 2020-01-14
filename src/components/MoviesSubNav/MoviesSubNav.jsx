@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import MovieSearch from '../../components/MovieSearch/MovieSearch';
-import MovieSearchCard from '../MovieSearchCard/MovieSearchCard';
 
 const Nav = styled.nav`
 	background: ${(props) => props.theme.subNavGray};
@@ -27,3 +27,8 @@ const MoviesSubNav = (props) => {
 };
 
 export default MoviesSubNav;
+
+MoviesSubNav.propTypes = {
+	movies: PropTypes.array.isRequired,
+	value: PropTypes.string.isRequired
+};

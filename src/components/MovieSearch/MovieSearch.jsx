@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import MovieSearchCard from '../MovieSearchCard/MovieSearchCard';
 
 const Input = styled.input`
@@ -50,3 +51,9 @@ function MovieSearch(props) {
 	);
 }
 export default MovieSearch;
+
+MovieSearch.propTypes = {
+	movies: PropTypes.array.isRequired,
+	value: PropTypes.string.isRequired,
+	movie: PropTypes.object.isRequired
+};
