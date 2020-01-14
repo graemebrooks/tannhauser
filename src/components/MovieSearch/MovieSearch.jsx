@@ -3,34 +3,50 @@ import styled from 'styled-components';
 import MovieSearchCard from '../MovieSearchCard/MovieSearchCard';
 
 const Input = styled.input`
-	background: rgba(242, 242, 242, 0.3);
+	background: ${(props) => props.theme.backgroundBlack};
 	padding: 5px;
-	border: 2px solid white;
-	border-radius: 10px;
+	margin: 3px;
+	border: 2px solid ${(props) => props.theme.primaryGreen};
+	border-radius: 5px;
 	color: white;
+	width: 50%;
+	&:hover {
+		/* border: 2px solid yellow; */
+	}
 	&:focus {
 		outline: none !important;
-		border: 2px solid ${(props) => props.theme.primaryGreen};
-		background: transparent;
+		border: 2px solid ${(props) => props.theme.royRed};
 	}
 `;
 
+const Ul = styled.ul`
+	max-height: 500px;
+	overflow-y: auto;
+	z-index: 5;
+	position: absolute;
+`;
+
+const Div = styled.div`width: 100%;`;
+
 function MovieSearch(props) {
 	return (
-		<div>
+		<Div>
 			<Input value={props.value} onChange={(e) => props.onChangeHandler(e)} placeholder="Search movies" />
 			{props.movies ? (
-				<ul>
+				<Ul>
 					{props.movies.map((movie) => {
 						return (
 							<li>
-								<MovieSearchCard movie={movie} />
+								<MovieSearchCard
+									movie={movie}
+									handleMovieDetailClick={(movie) => props.handleMovieDetailClick(movie)}
+								/>
 							</li>
 						);
 					})}
-				</ul>
+				</Ul>
 			) : null}
-		</div>
+		</Div>
 	);
 }
 export default MovieSearch;

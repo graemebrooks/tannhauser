@@ -4,7 +4,8 @@ const Movie = require('../models/movie');
 const OMDB_DATA_URL = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&`;
 
 module.exports = {
-	create
+	create,
+	testConnect
 };
 
 async function create(req, res) {
@@ -17,4 +18,9 @@ async function create(req, res) {
 		console.log(err);
 		res.send(err);
 	}
+}
+
+function testConnect(req, res) {
+	console.log('Connected');
+	res.send('Connected!');
 }

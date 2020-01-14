@@ -7,6 +7,9 @@ const LandingPage = (props) => {
 	return (
 		<div>
 			<H1>LandingPage</H1>;
+			<button onClick={() => props.testExpressConnection()} className="btn btn-default">
+				Test Express Connection!
+			</button>
 		</div>
 	);
 };

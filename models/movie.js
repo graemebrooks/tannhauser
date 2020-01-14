@@ -15,9 +15,6 @@ const movieSchema = new Schema(
 		moviePlotSummary: {
 			type: String
 		},
-		movieRTRating: {
-			type: String
-		},
 		moviePosterUrl: {
 			type: String
 		},
