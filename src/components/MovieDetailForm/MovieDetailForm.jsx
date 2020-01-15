@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -12,18 +12,32 @@ const Div = styled.div`
 		display: flex;
 		flex-direction: column;
 		padding: 5px;
-		.checkbox > input {
+		/* .checkbox > input {
 			height: 25px;
 			width: 25px;
 			appearance: none;
 			border: 1px solid ${(props) => props.theme.royRed};
 			transition-duration: 0.3s;
 			background-color: white;
-		}
+		} */
 	}
 `;
 
 const MovieDetailForm = (props) => {
+	const [ formData, setFormData ] = useState({
+		hasSeen: false,
+		dateWatched: null,
+		wantToWatch: false
+	});
+
+	const onFormChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value
+		});
+		console.log(formData);
+	};
+
 	let releaseYear = props.currentMovie.release_date.substring(0, 4);
 
 	let movieData = {
@@ -33,9 +47,9 @@ const MovieDetailForm = (props) => {
 		movieDirector: '',
 		moviePlotSummary: props.currentMovie.overview,
 		moviePosterUrl: `http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`,
-		watchedStatus: false,
-		wantToWatchStatus: false,
-		userDateWatched: new Date(),
+		watchedStatus: formData.hasSeen === 'on' ? true : false,
+		wantToWatchStatus: formData.wantToWatch === 'on' ? true : false,
+		userDateWatched: formData.dateWatched,
 		userRating: 99
 	};
 
@@ -43,15 +57,15 @@ const MovieDetailForm = (props) => {
 		<Div>
 			<form>
 				<label className="checkbox">
-					<input type="checkbox" name="hasSeen" />
+					<input onChange={onFormChange} type="checkbox" name="hasSeen" />
 					<span> Have Seen</span>
 				</label>
 				<label className="">
-					<input type="date" name="dateWatched" />
+					<input onChange={onFormChange} type="date" name="dateWatched" />
 					<span> Date Seen</span>
 				</label>
-				<label className="checkbox">
-					<input type="checkbox" name="wantsToWatch" />
+				<label onChange={onFormChange} className="checkbox">
+					<input type="checkbox" name="wantToWatch" />
 					<span> Want to Watch</span>
 				</label>
 				<button onClick={(e) => props.handleMovieDetailSubmit(e, movieData)} className="btn btn-danger">

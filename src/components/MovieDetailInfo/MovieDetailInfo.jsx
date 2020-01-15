@@ -12,8 +12,8 @@ const MovieDetailInfo = (props) => {
 	return (
 		<Div>
 			<h1>{props.currentMovie.title}</h1>
+			<img src={`http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`} />
 			<p>{props.currentMovie.overview}</p>
-			<p>`http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`</p>
 			<p>{props.currentMovie.id}</p>
 		</Div>
 	);
