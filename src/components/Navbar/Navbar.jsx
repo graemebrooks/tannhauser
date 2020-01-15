@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 import logo from '../../thtransparent.svg';
 import { Link } from 'react-router-dom';
@@ -6,14 +8,14 @@ import { Link } from 'react-router-dom';
 class Navbar extends React.Component {
 	render() {
 		return (
-			<nav class="navbar navbar-expand-lg">
+			<nav className="navbar navbar-expand-lg">
 				<Link to="/" style={{ textDecoration: 'none' }}>
-					<div class="navbar-brand" href="#">
+					<div className="navbar-brand" href="#">
 						<img src={logo} alt="logo" />
 					</div>
 				</Link>
 				<button
-					class="navbar-toggler"
+					className="navbar-toggler"
 					type="button"
 					data-toggle="collapse"
 					data-target="#navbarSupportedContent"
@@ -21,28 +23,35 @@ class Navbar extends React.Component {
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
-					<span class="navbar-toggler-icon" />
+					<FontAwesomeIcon icon={faBars} />
 				</button>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
+				<div className="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul className="navbar-nav mr-auto">
 						<Link to="/movieDetail" style={{ textDecoration: 'none' }}>
-							<li class="nav-item active">
-								<div class="nav-link" href="#">
-									Movie Detail <span class="sr-only">(current)</span>
+							<li className="nav-item active">
+								<div className="nav-link" href="#">
+									Movie Detail <span className="sr-only">(current)</span>
+								</div>
+							</li>
+						</Link>
+						<Link to="" style={{ textDecoration: 'none' }}>
+							<li className="nav-item active">
+								<div className="nav-link" href="#">
+									Dashboard <span className="sr-only">(current)</span>
 								</div>
 							</li>
 						</Link>
 						<Link to="/myMovies" style={{ textDecoration: 'none' }}>
-							<li class="nav-item">
-								<div class="nav-link" href="#">
-									My Movies
+							<li className="nav-item">
+								<div className="nav-link" href="#">
+									Library
 								</div>
 							</li>
 						</Link>
-						<li class="nav-item dropdown">
+						<li className="nav-item dropdown">
 							<div
-								class="nav-link dropdown-toggle"
+								className="nav-link dropdown-toggle"
 								href="#"
 								id="navbarDropdown"
 								role="button"
@@ -54,9 +63,9 @@ class Navbar extends React.Component {
 							</div>
 						</li>
 					</ul>
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<div class="nav-link" href="#">
+					<ul className="navbar-nav ml-auto">
+						<li className="nav-item">
+							<div className="nav-link" href="#">
 								Login
 							</div>
 						</li>

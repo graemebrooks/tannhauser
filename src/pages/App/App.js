@@ -14,11 +14,13 @@ import LandingPage from '../LandingPage/LandingPage';
 
 const theme = {
 	primaryGreen: '#11e996',
-	secondaryOrange: '#ef9145',
+	orbitalOrange: '#ef9145',
 	backgroundBlack: '#282828',
 	subNavGray: '#4d4d4d',
+	lightyearGray: '#999999',
 	galacticGold: '#ebc334',
-	royRed: '#e02835'
+	royRed: '#e02835',
+	radonRust: '#75161d'
 };
 
 class App extends React.Component {

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Div = styled.div`
 	* {
@@ -20,4 +21,6 @@ const MovieDetailInfo = (props) => {
 
 export default MovieDetailInfo;
 
-MovieDetailInfo.propTypes = {};
+MovieDetailInfo.propTypes = {
+	currentMovie: PropTypes.object.isRequired
+};

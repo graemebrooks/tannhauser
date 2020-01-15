@@ -9,6 +9,7 @@ const Nav = styled.nav`
 	display: flex;
 	flex-direction: row;
 	padding: 5px;
+	color: white;
 `;
 
 const MoviesSubNav = (props) => {
