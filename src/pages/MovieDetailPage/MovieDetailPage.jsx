@@ -1,19 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import MovieDetailForm from '../../components/MovieDetailForm/MovieDetailForm';
+import MovieDetailInfo from '../../components/MovieDetailInfo/MovieDetailInfo';
+
 const H1 = styled.h1`color: white;`;
 const Main = styled.main`
 	height: 100vh;
-	background: ${(props) => props.theme.primaryGreen};
+	background: ${(props) => props.theme.backgroundBlack};
 `;
 
 const MovieDetailPage = (props) => {
 	return (
 		<Main>
 			<H1>Movie Details</H1>
-			<img src={`http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`} />
-			<h2>{props.currentMovie.title}</h2>
-			<p>{props.currentMovie.overview}</p>
+			<MovieDetailForm
+				currentMovie={props.currentMovie}
+				handleMovieDetailSubmit={props.handleMovieDetailSubmit}
+			/>
+			<MovieDetailInfo currentMovie={props.currentMovie} />
 		</Main>
 	);
 };

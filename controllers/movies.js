@@ -9,15 +9,23 @@ module.exports = {
 };
 
 async function create(req, res) {
-	let movieData;
-	try {
-		movieData = await fetch(`${OMDB_DATA_URL}t=shrek`).then((res) => res.json());
-		console.log(movieData);
-		res.send(movieData);
-	} catch (err) {
-		console.log(err);
-		res.send(err);
-	}
+	console.log('receiving input!');
+	console.log(req.body.movieTitle);
+	newMovie = new Movie({
+		movieTitle: req.body.movieTitle,
+		tmdbId: req.body.tmdbId,
+		movieReleaseYear: req.body.movieReleaseYear,
+		movieDirector: req.body.movieDirector,
+		moviePlotSummary: req.body.moviePlotSummary,
+		moviePosterUrl: req.body.moviePosterUrl,
+		watchedStatus: req.body.watchedStatus,
+		wantToWatchStatus: req.body.wantToWatchStatus,
+		userDateWatched: req.body.userDateWatched,
+		userRating: req.body.userRating
+	});
+	newMovie.save(function(err, movie) {
+		console.log(movie);
+	});
 }
 
 function testConnect(req, res) {

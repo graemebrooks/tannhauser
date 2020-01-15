@@ -1,7 +1,6 @@
 import React from 'react';
 import './Navbar.css';
 import logo from '../../thtransparent.svg';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
@@ -9,9 +8,9 @@ class Navbar extends React.Component {
 		return (
 			<nav class="navbar navbar-expand-lg">
 				<Link to="/" style={{ textDecoration: 'none' }}>
-					<a class="navbar-brand" href="#">
-						<img src={logo} />
-					</a>
+					<div class="navbar-brand" href="#">
+						<img src={logo} alt="logo" />
+					</div>
 				</Link>
 				<button
 					class="navbar-toggler"
@@ -29,20 +28,20 @@ class Navbar extends React.Component {
 					<ul class="navbar-nav mr-auto">
 						<Link to="/movieDetail" style={{ textDecoration: 'none' }}>
 							<li class="nav-item active">
-								<a class="nav-link" href="#">
+								<div class="nav-link" href="#">
 									Movie Detail <span class="sr-only">(current)</span>
-								</a>
+								</div>
 							</li>
 						</Link>
 						<Link to="/myMovies" style={{ textDecoration: 'none' }}>
 							<li class="nav-item">
-								<a class="nav-link" href="#">
+								<div class="nav-link" href="#">
 									My Movies
-								</a>
+								</div>
 							</li>
 						</Link>
 						<li class="nav-item dropdown">
-							<a
+							<div
 								class="nav-link dropdown-toggle"
 								href="#"
 								id="navbarDropdown"
@@ -52,26 +51,14 @@ class Navbar extends React.Component {
 								aria-expanded="false"
 							>
 								Dropdown
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">
-									Action
-								</a>
-								<a class="dropdown-item" href="#">
-									Another action
-								</a>
-								<div class="dropdown-divider" />
-								<a class="dropdown-item" href="#">
-									Something else here
-								</a>
 							</div>
 						</li>
 					</ul>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<div class="nav-link" href="#">
 								Login
-							</a>
+							</div>
 						</li>
 					</ul>
 				</div>

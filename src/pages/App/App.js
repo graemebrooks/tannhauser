@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import '../../App.css';
-import { utilsSearch } from '../../utils/utils';
+import { utilsSearch } from '../../utils/movie-api-search';
+import { createMovie } from '../../services/create-movie';
 import Navbar from '../../components/Navbar/Navbar';
 
 // Import Pages
@@ -31,13 +32,10 @@ class App extends React.Component {
 	};
 
 	search = async (val) => {
-		console.log('Searching...');
 		this.setState({ movieSearch: { loading: true } });
 		const TMDB_DATA_URL = `https://api.themoviedb.org/3/search/movie?query=${val}&api_key=d367945c5d4ae69f54ff775f0d01eb45`;
 		const res = await utilsSearch(`${TMDB_DATA_URL}`);
-		console.log(res);
 		const movies = res;
-		console.log(movies);
 		this.setState({ movieSearch: { ...this.state.movieSearch, movies: movies, loading: false } });
 	};
 
@@ -50,6 +48,12 @@ class App extends React.Component {
 		this.setState({
 			currentMovie: movie
 		});
+	};
+
+	handleMovieDetailSubmit = (e, movieData) => {
+		e.preventDefault();
+		createMovie(movieData);
+		console.log('Detail Submit!');
 	};
 
 	testExpressConnection = () => {
@@ -88,7 +92,11 @@ class App extends React.Component {
 								path="/movieDetail"
 								exact
 								render={(props) => (
-									<MovieDetailPage currentMovie={this.state.currentMovie} {...props} />
+									<MovieDetailPage
+										currentMovie={this.state.currentMovie}
+										handleMovieDetailSubmit={this.handleMovieDetailSubmit}
+										{...props}
+									/>
 								)}
 							/>
 						</Switch>

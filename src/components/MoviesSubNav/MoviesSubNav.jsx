@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import MovieSearch from '../../components/MovieSearch/MovieSearch';
 
@@ -15,7 +14,7 @@ const Nav = styled.nav`
 const MoviesSubNav = (props) => {
 	return (
 		<Nav>
-			<a>Movies Sub Nav</a>
+			<div>Movies Sub Nav</div>
 			<MovieSearch
 				movies={props.movies}
 				value={props.value}

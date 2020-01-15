@@ -23,10 +23,6 @@ const Card = styled.div`
 		color: white;
 		margin: 2rem;
 	}
-
-	a {
-		color: inherit;
-	}
 `;
 
 function MovieSearchCard(props) {
@@ -36,15 +32,15 @@ function MovieSearchCard(props) {
 	}
 	return (
 		<Link to="/movieDetail" style={{ textDecoration: 'none' }}>
-			<a onClick={(movie) => props.handleMovieDetailClick(props.movie)}>
+			<div onClick={(movie) => props.handleMovieDetailClick(props.movie)}>
 				<Card>
-					<img src={`http://image.tmdb.org/t/p/w185${props.movie.poster_path}`} />
+					<img alt="Movie Poster" src={`http://image.tmdb.org/t/p/w185${props.movie.poster_path}`} />
 					<h3>
 						{props.movie.title} ({releaseYear})
 					</h3>
 					<p>{props.movie.overview}</p>
 				</Card>
-			</a>
+			</div>
 		</Link>
 	);
 }

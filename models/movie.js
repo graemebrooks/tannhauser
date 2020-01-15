@@ -6,6 +6,9 @@ const movieSchema = new Schema(
 		movieTitle: {
 			type: String
 		},
+		tmdbId: {
+			type: Number
+		},
 		movieReleaseYear: {
 			type: String
 		},
@@ -19,7 +22,10 @@ const movieSchema = new Schema(
 			type: String
 		},
 		watchedStatus: {
-			type: String
+			type: Boolean
+		},
+		wantToWatchStatus: {
+			type: Boolean
 		},
 		userDateWatched: {
 			type: Date
