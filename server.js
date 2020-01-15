@@ -9,6 +9,7 @@ require('dotenv').config();
 require('./config/database');
 
 const moviesRouter = require('./routes/movies');
+const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
 app.use('/api/movies', moviesRouter);
+app.use('/api/users', usersRouter);
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

@@ -1,7 +1,4 @@
-const fetch = require('node-fetch');
 const Movie = require('../models/movie');
-
-const OMDB_DATA_URL = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&`;
 
 module.exports = {
 	create,

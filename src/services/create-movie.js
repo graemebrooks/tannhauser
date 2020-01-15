@@ -6,5 +6,5 @@ export async function createMovie(movieData) {
 		url: '/api/movies',
 		data: movieData
 	});
-	console.log('Submiiting movie from createMovie');
+	console.log('Submiting movie from createMovie');
 }
