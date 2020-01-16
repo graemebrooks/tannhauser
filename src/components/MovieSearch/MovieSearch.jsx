@@ -56,6 +56,5 @@ export default MovieSearch;
 
 MovieSearch.propTypes = {
 	movies: PropTypes.array.isRequired,
-	value: PropTypes.string.isRequired,
-	movie: PropTypes.object.isRequired
+	value: PropTypes.string.isRequired
 };

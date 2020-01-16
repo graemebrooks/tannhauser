@@ -11,6 +11,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import MyMoviesPage from '../MyMoviesPage/MyMoviesPage';
 import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
 import LandingPage from '../LandingPage/LandingPage';
+import SignupPage from '../SignupPage/SignupPage';
 
 const theme = {
 	primaryGreen: '#11e996',
@@ -26,7 +27,7 @@ const theme = {
 class App extends React.Component {
 	state = {
 		movieSearch: {
-			movies: null,
+			movies: [],
 			loading: false,
 			value: ''
 		},
@@ -68,41 +69,43 @@ class App extends React.Component {
 		return (
 			<ThemeProvider theme={theme}>
 				<Router>
-					<Navbar />
-					<div className="App">
-						<Switch>
-							<Route
-								path="/"
-								exact
-								render={(props) => (
-									<LandingPage {...props} testExpressConnection={this.testExpressConnection} />
-								)}
-							/>
-							<Route
-								path="/myMovies"
-								render={(props) => (
-									<MyMoviesPage
-										{...props}
-										movies={this.state.movieSearch.movies}
-										value={this.state.movieSearch.value}
-										onChangeHandler={this.onChangeHandler}
-										handleMovieDetailClick={this.handleMovieDetailClick}
-									/>
-								)}
-							/>
-							<Route
-								path="/movieDetail"
-								exact
-								render={(props) => (
-									<MovieDetailPage
-										currentMovie={this.state.currentMovie}
-										handleMovieDetailSubmit={this.handleMovieDetailSubmit}
-										{...props}
-									/>
-								)}
-							/>
-						</Switch>
-					</div>
+					<Navbar>
+						<div className="App">
+							<Switch>
+								<Route
+									path="/"
+									exact
+									render={(props) => (
+										<LandingPage {...props} testExpressConnection={this.testExpressConnection} />
+									)}
+								/>
+								<Route
+									path="/myMovies"
+									render={(props) => (
+										<MyMoviesPage
+											{...props}
+											movies={this.state.movieSearch.movies}
+											value={this.state.movieSearch.value}
+											onChangeHandler={this.onChangeHandler}
+											handleMovieDetailClick={this.handleMovieDetailClick}
+										/>
+									)}
+								/>
+								<Route
+									path="/movieDetail"
+									exact
+									render={(props) => (
+										<MovieDetailPage
+											currentMovie={this.state.currentMovie}
+											handleMovieDetailSubmit={this.handleMovieDetailSubmit}
+											{...props}
+										/>
+									)}
+								/>
+								<Route path="/signup" exact render={(props) => <SignupPage {...props} />} />
+							</Switch>
+						</div>
+					</Navbar>
 				</Router>
 			</ThemeProvider>
 		);

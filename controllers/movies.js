@@ -2,13 +2,13 @@ const Movie = require('../models/movie');
 
 module.exports = {
 	create,
-	testConnect
+	index
 };
 
 async function create(req, res) {
 	console.log('receiving input!');
 	console.log(req.body.movieTitle);
-	newMovie = new Movie({
+	newMovie = await new Movie({
 		movieTitle: req.body.movieTitle,
 		tmdbId: req.body.tmdbId,
 		movieReleaseYear: req.body.movieReleaseYear,
@@ -25,7 +25,12 @@ async function create(req, res) {
 	});
 }
 
-function testConnect(req, res) {
-	console.log('Connected');
-	res.send('Connected!');
+async function index(req, res) {
+	try {
+		movies = await Movie.find({});
+		console.log(movies);
+		res.status(201).json(movies);
+	} catch (err) {
+		res.status(400).json(err);
+	}
 }
