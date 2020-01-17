@@ -1,26 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
-
+import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm';
 
-const Div = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-
-	h1 {
-		color: white;
+class SignupPage extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { message: '' };
 	}
-`;
 
-const SignupPage = (props) => {
-	return (
-		<Div>
-			<h1>Signup Page</h1>;
-			<SignupForm />
-		</Div>
-	);
-};
+	updateMessage = (msg) => {
+		this.setState({ message: msg });
+	};
+
+	render() {
+		return (
+			<div className="SignupPage">
+				<SignupForm
+					{...this.props}
+					handleSignupOrLogin={this.props.handleSignupOrLogin}
+					updateMessage={this.updateMessage}
+				/>
+				<p>{this.state.message}</p>
+			</div>
+		);
+	}
+}
 
 export default SignupPage;

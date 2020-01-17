@@ -2,7 +2,8 @@ const Movie = require('../models/movie');
 
 module.exports = {
 	create,
-	index
+	index,
+	delete: deleteMovie
 };
 
 async function create(req, res) {
@@ -34,3 +35,22 @@ async function index(req, res) {
 		res.status(400).json(err);
 	}
 }
+
+async function deleteMovie(req, res) {
+	try {
+		await Movie.findByIdAndDelete(req.params.id);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+}
+
+// function deleteCritique(req, res) {
+// 	User.findById(req.user._id, function(err, user) {
+// 		deletedCrit = user.critiques.indexOf(req.params.id);
+// 		user.critiques.splice(deletedCrit, 1);
+// 		user.save(function(err, user) {});
+// 	});
+// 	Critique.findByIdAndDelete(req.params.id, function(err, crit) {
+// 		res.redirect('/gallery');
+// 	});
+// }

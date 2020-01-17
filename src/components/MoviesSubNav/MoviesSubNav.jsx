@@ -9,6 +9,7 @@ const Nav = styled.nav`
 	display: flex;
 	flex-direction: row;
 	padding: 5px;
+	width: 100%;
 	color: white;
 `;
 

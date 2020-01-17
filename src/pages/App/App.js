@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import '../../App.css';
 import { utilsSearch } from '../../utils/movie-api-search';
+import userService from '../../utils/userService';
 import { createMovie } from '../../services/create-movie';
 import Navbar from '../../components/Navbar/Navbar';
 
@@ -12,6 +13,7 @@ import MyMoviesPage from '../MyMoviesPage/MyMoviesPage';
 import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
 import LandingPage from '../LandingPage/LandingPage';
 import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 const theme = {
 	primaryGreen: '#11e996',
@@ -31,7 +33,8 @@ class App extends React.Component {
 			loading: false,
 			value: ''
 		},
-		currentMovie: {}
+		currentMovie: {},
+		user: userService.getUser()
 	};
 
 	search = async (val) => {
@@ -56,60 +59,76 @@ class App extends React.Component {
 	handleMovieDetailSubmit = (e, movieData) => {
 		e.preventDefault();
 		createMovie(movieData);
-		console.log('Detail Submit!');
+		this.props.history.push('/myMovies');
 	};
 
-	testExpressConnection = () => {
-		fetch('/api/movies/testConnect').then((res) => {
-			console.log('connection established...');
-		});
+	handleLogout = () => {
+		console.log('Logging out...');
+		userService.logout();
+		this.setState({ user: null });
+	};
+
+	handleSignupOrLogin = () => {
+		console.log(`handleSignupOrLogin`);
+		this.setState({ user: userService.getUser() });
 	};
 
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				<Router>
-					<Navbar>
-						<div className="App">
-							<Switch>
-								<Route
-									path="/"
-									exact
-									render={(props) => (
-										<LandingPage {...props} testExpressConnection={this.testExpressConnection} />
-									)}
-								/>
-								<Route
-									path="/myMovies"
-									render={(props) => (
-										<MyMoviesPage
-											{...props}
-											movies={this.state.movieSearch.movies}
-											value={this.state.movieSearch.value}
-											onChangeHandler={this.onChangeHandler}
-											handleMovieDetailClick={this.handleMovieDetailClick}
-										/>
-									)}
-								/>
-								<Route
-									path="/movieDetail"
-									exact
-									render={(props) => (
-										<MovieDetailPage
-											currentMovie={this.state.currentMovie}
-											handleMovieDetailSubmit={this.handleMovieDetailSubmit}
-											{...props}
-										/>
-									)}
-								/>
-								<Route path="/signup" exact render={(props) => <SignupPage {...props} />} />
-							</Switch>
-						</div>
-					</Navbar>
-				</Router>
+				<Navbar user={this.state.user} handleLogout={this.handleLogout}>
+					<div className="App">
+						<Switch>
+							<Route
+								path="/"
+								exact
+								render={(props) => (
+									<LandingPage {...props} testExpressConnection={this.testExpressConnection} />
+								)}
+							/>
+							<Route
+								path="/myMovies"
+								render={(props) => (
+									<MyMoviesPage
+										{...props}
+										movies={this.state.movieSearch.movies}
+										value={this.state.movieSearch.value}
+										onChangeHandler={this.onChangeHandler}
+										handleMovieDetailClick={this.handleMovieDetailClick}
+									/>
+								)}
+							/>
+							<Route
+								path="/movieDetail"
+								exact
+								render={(props) => (
+									<MovieDetailPage
+										currentMovie={this.state.currentMovie}
+										handleMovieDetailSubmit={this.handleMovieDetailSubmit}
+										{...props}
+									/>
+								)}
+							/>
+							<Route
+								path="/signup"
+								exact
+								render={(props) => (
+									<SignupPage handleSignupOrLogin={this.handleSignupOrLogin} {...props} />
+								)}
+							/>
+							<Route
+								path="/login"
+								exact
+								render={(props) => (
+									<LoginPage handleSignupOrLogin={this.handleSignupOrLogin} {...props} />
+								)}
+							/>
+						</Switch>
+					</div>
+				</Navbar>
 			</ThemeProvider>
 		);
 	}
 }
 
-export default App;
+export default withRouter(App);

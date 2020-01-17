@@ -4,16 +4,23 @@ import styled from 'styled-components';
 import { retrieveMovies } from '../../services/retrieve-movies';
 
 import MoviesSubNav from '../../components/MoviesSubNav/MoviesSubNav';
+import LibraryContainer from '../../components/LibraryContainer/LibraryContainer';
 
-const Div = styled.div`color: white;`;
+const Div = styled.div`
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+`;
 
 const MyMoviesPage = (props) => {
 	const [ moviesList, setMoviesList ] = useState([ {} ]);
 
 	useEffect(() => {
 		retrieveMovies().then((dbMovies) => {
-			console.log(`dbMovies: ${dbMovies[0].movieTitle}`);
-			setMoviesList(dbMovies);
+			setMoviesList([ dbMovies ]);
 		});
 	}, []);
 
@@ -27,16 +34,8 @@ const MyMoviesPage = (props) => {
 				onChangeHandler={(e) => props.onChangeHandler(e)}
 				handleMovieDetailClick={props.handleMovieDetailClick}
 			/>
-			<h1>MyMoviesPage</h1>
-			{moviesList.map((movie) => {
-				return (
-					<div>
-						<p>{movie.movieTitle}</p>
-						<p>{movie.movieReleaseYear}</p>
-						<p>{movie.moviePlotSummary}</p>
-					</div>
-				);
-			})}
+			<div />
+			<LibraryContainer movies={moviesList} />
 		</Div>
 	);
 };
