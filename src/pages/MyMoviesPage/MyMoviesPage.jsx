@@ -16,17 +16,25 @@ const Div = styled.div`
 `;
 
 const MyMoviesPage = (props) => {
-	const [ moviesList, setMoviesList ] = useState([ {} ]);
+	const [ data, setData ] = useState({
+		movies: [ {} ],
+		isLoading: false
+	});
 
 	useEffect(() => {
-		retrieveMovies().then((dbMovies) => {
-			setMoviesList([ dbMovies ]);
-		});
+		const fetchData = async () => {
+			setData({ ...data, isLoading: true });
+			const result = await retrieveMovies();
+			console.log('updating library state');
+			setData({ ...data, movies: result });
+		};
+		fetchData();
+		setData({ ...data, isLoading: false });
 	}, []);
 
-	console.log(moviesList);
-
-	return (
+	return data.isLoading ? (
+		<div>Loading</div>
+	) : (
 		<Div>
 			<MoviesSubNav
 				movies={props.movies}
@@ -34,8 +42,7 @@ const MyMoviesPage = (props) => {
 				onChangeHandler={(e) => props.onChangeHandler(e)}
 				handleMovieDetailClick={props.handleMovieDetailClick}
 			/>
-			<div />
-			<LibraryContainer movies={moviesList} />
+			<LibraryContainer movies={data.movies} />
 		</Div>
 	);
 };

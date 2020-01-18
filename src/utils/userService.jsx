@@ -30,6 +30,7 @@ function getUser() {
 }
 
 function signup(user) {
+	
 	return fetch(BASE_URL + 'signup', {
 		method: 'POST',
 		headers: new Headers({ 'Content-Type': 'application/json' }),

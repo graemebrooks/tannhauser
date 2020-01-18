@@ -10,15 +10,18 @@ const Div = styled.div`
 	background: ${(props) => props.theme.subNavGray};
 `;
 
-const MyMoviesPage = (props) => {
+const LibraryContainer = (props) => {
 	return (
 		<Div>
-			{props.movies[0].watchedStatus !== null &&
-				props.movies.map((movie) => {
-					return <MovieCard movie={movie} hasWatched={movie.watchedStatus} />;
-				})}
+			{props.movies[0] !== null ? (
+				props.movies.map((movieItem) => {
+					return <MovieCard movie={movieItem} hasWatched={movieItem.watchedStatus} />;
+				})
+			) : (
+				<p>No movies yet!</p>
+			)}
 		</Div>
 	);
 };
 
-export default MyMoviesPage;
+export default LibraryContainer;
