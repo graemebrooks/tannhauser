@@ -31,6 +31,11 @@ const Ul = styled.ul`
 const Div = styled.div`width: 100%;`;
 
 function MovieSearch(props) {
+
+	useEffect(() => {
+		return () => props.clearSearch();
+	}, [])
+
 	return (
 		<Div>
 			<Input value={props.value} onChange={(e) => props.onChangeHandler(e)} placeholder="Add movies" />

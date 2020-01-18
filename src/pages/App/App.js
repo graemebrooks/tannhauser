@@ -45,6 +45,16 @@ class App extends React.Component {
 		this.setState({ movieSearch: { ...this.state.movieSearch, movies: movies, loading: false } });
 	};
 
+	clearSearch = () => {
+		this.setState({
+			movieSearch: {
+				movies: [],
+				loading: false,
+				value: ''
+			}
+		});
+	};
+
 	onChangeHandler = async (e) => {
 		this.search(e.target.value);
 		this.setState({ value: e.target.value });
@@ -54,6 +64,7 @@ class App extends React.Component {
 		this.setState({
 			currentMovie: movie
 		});
+		this.clearSearch();
 	};
 
 	handleMovieDetailSubmit = (e, movieData) => {
@@ -95,6 +106,7 @@ class App extends React.Component {
 										value={this.state.movieSearch.value}
 										onChangeHandler={this.onChangeHandler}
 										handleMovieDetailClick={this.handleMovieDetailClick}
+										clearSearch={this.clearSearch}
 									/>
 								)}
 							/>

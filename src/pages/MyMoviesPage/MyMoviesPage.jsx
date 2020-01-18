@@ -41,6 +41,7 @@ const MyMoviesPage = (props) => {
 				value={props.value}
 				onChangeHandler={(e) => props.onChangeHandler(e)}
 				handleMovieDetailClick={props.handleMovieDetailClick}
+				clearSearch={props.clearSearch}
 			/>
 			<LibraryContainer movies={data.movies} />
 		</Div>

@@ -22,6 +22,7 @@ const MoviesSubNav = (props) => {
 				value={props.value}
 				onChangeHandler={(e) => props.onChangeHandler(e)}
 				handleMovieDetailClick={props.handleMovieDetailClick}
+				clearSearch={props.clearSearch}
 			/>
 		</Nav>
 	);
