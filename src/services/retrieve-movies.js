@@ -5,12 +5,12 @@ export async function retrieveMovies() {
 	try {
 		let moviesList = await axios({
 			method: 'get',
-			url: '/api/movies/index'
-			// headers: {
-			// 	'Content-type': 'application/json',
-			// 	// Add this header - don't forget the space after Bearer
-			// 	Authorization: 'Bearer ' + tokenService.getToken()
-			// }
+			url: '/api/movies/index',
+			headers: {
+				'Content-type': 'application/json',
+				// Add this header - don't forget the space after Bearer
+				Authorization: 'Bearer ' + tokenService.getToken()
+			}
 		}).then(
 			(response) => {
 				console.log(`Response from retrieveMovies: ${response.data}`);

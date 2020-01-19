@@ -53,7 +53,11 @@ const MyMoviesPage = (props) => {
 				handleMovieDetailClick={props.handleMovieDetailClick}
 				clearSearch={props.clearSearch}
 			/>
-			<LibraryContainer deleteMovie={deleteMovie} movies={data.movies} />
+			<LibraryContainer
+				handleMovieDetailClick={props.handleMovieDetailClick}
+				deleteMovie={deleteMovie}
+				movies={data.movies}
+			/>
 		</Div>
 	);
 };

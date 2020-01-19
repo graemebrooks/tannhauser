@@ -5,6 +5,7 @@ import '../../App.css';
 import { utilsSearch } from '../../utils/movie-api-search';
 import userService from '../../utils/userService';
 import { createMovie } from '../../services/create-movie';
+import { updateMovie } from '../../services/update-movie-service';
 import Navbar from '../../components/Navbar/Navbar';
 
 // Import Pages
@@ -62,15 +63,25 @@ class App extends React.Component {
 	};
 
 	handleMovieDetailClick = (movie) => {
+		console.log('handling detail click');
+		console.log(movie);
 		this.setState({
 			currentMovie: movie
 		});
+		console.log(this.state.currentMovie);
 		this.clearSearch();
 	};
 
 	handleMovieDetailSubmit = (e, movieData) => {
 		e.preventDefault();
 		createMovie(movieData);
+		this.props.history.push('/myMovies');
+	};
+
+	handleMovieDetailUpdate = (e, movieData, movieId) => {
+		console.log('handle update...');
+		e.preventDefault();
+		updateMovie(movieData, movieId);
 		this.props.history.push('/myMovies');
 	};
 
@@ -119,6 +130,7 @@ class App extends React.Component {
 										user={this.state.user}
 										currentMovie={this.state.currentMovie}
 										handleMovieDetailSubmit={this.handleMovieDetailSubmit}
+										handleMovieDetailUpdate={this.handleMovieDetailUpdate}
 										{...props}
 									/>
 								)}

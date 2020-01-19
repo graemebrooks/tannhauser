@@ -3,7 +3,8 @@ const Movie = require('../models/movie');
 module.exports = {
 	create,
 	index,
-	delete: deleteMovie
+	delete: deleteMovie,
+	update
 };
 
 async function create(req, res) {
@@ -32,7 +33,7 @@ async function create(req, res) {
 
 async function index(req, res) {
 	try {
-		movies = await Movie.find({});
+		movies = await Movie.find({ userId: req.user._id });
 		res.status(201).json(movies);
 	} catch (err) {
 		res.status(400).json(err);
@@ -41,19 +42,18 @@ async function index(req, res) {
 
 async function deleteMovie(req, res) {
 	try {
+		console.log(req.params.id);
 		await Movie.findByIdAndDelete(req.params.id);
 	} catch (err) {
 		res.status(400).json(err);
 	}
 }
 
-// function deleteCritique(req, res) {
-// 	User.findById(req.user._id, function(err, user) {
-// 		deletedCrit = user.critiques.indexOf(req.params.id);
-// 		user.critiques.splice(deletedCrit, 1);
-// 		user.save(function(err, user) {});
-// 	});
-// 	Critique.findByIdAndDelete(req.params.id, function(err, crit) {
-// 		res.redirect('/gallery');
-// 	});
-// }
+async function update(req, res) {
+	try {
+		console.log('updating from controller...');
+		await Movie.findByIdAndUpdate(req.params.id, req.body);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+}

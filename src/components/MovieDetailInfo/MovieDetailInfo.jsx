@@ -9,12 +9,17 @@ const Div = styled.div`
 `;
 
 const MovieDetailInfo = (props) => {
-	return (
+	return props.currentMovie._id ? (
+		<Div>
+			<h1>{props.currentMovie.movieTitle}</h1>
+			<img src={props.currentMovie.moviePosterUrl} />
+			<p>{props.currentMovie.moviePlotSummary}</p>
+		</Div>
+	) : (
 		<Div>
 			<h1>{props.currentMovie.title}</h1>
 			<img src={`http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`} />
 			<p>{props.currentMovie.overview}</p>
-			<p>{props.currentMovie.id}</p>
 		</Div>
 	);
 };

@@ -7,5 +7,6 @@ const movieCtrl = require('../controllers/movies');
 router.post('/', movieCtrl.create);
 router.get('/index', movieCtrl.index);
 router.delete('/:id', movieCtrl.delete);
+router.put('/:id', movieCtrl.update);
 
 module.exports = router;

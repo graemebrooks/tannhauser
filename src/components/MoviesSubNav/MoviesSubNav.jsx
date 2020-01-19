@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import MovieSearch from '../../components/MovieSearch/MovieSearch';
+import Keys from '../../components/Keys/Keys';
 
 const Nav = styled.nav`
 	background: ${(props) => props.theme.subNavGray};
@@ -23,6 +24,7 @@ const MoviesSubNav = (props) => {
 				handleMovieDetailClick={props.handleMovieDetailClick}
 				clearSearch={props.clearSearch}
 			/>
+			<Keys />
 		</Nav>
 	);
 };

@@ -8,6 +8,8 @@ const Div = styled.div`
 	width: 80vw;
 	margin: 20px;
 	background: ${(props) => props.theme.subNavGray};
+	border: 5px solid ${(props) => props.theme.pulsarPurple};
+	border-radius: 10px;
 `;
 
 const LibraryContainer = (props) => {
@@ -19,6 +21,7 @@ const LibraryContainer = (props) => {
 						<MovieCard
 							key={i}
 							movie={movieItem}
+							handleMovieDetailClick={(movie) => props.handleMovieDetailClick(movie)}
 							hasWatched={movieItem.watchedStatus}
 							deleteMovie={props.deleteMovie}
 						/>

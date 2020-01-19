@@ -9,12 +9,12 @@ const Navbar = (props) => {
 	let authNav =
 		props.user === null ? (
 			<ul className="navbar-nav ml-auto">
-				<Link to="/signup">
+				<Link to="/signup" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
 						<div className="nav-link">Signup</div>
 					</li>
 				</Link>
-				<Link to="/login">
+				<Link to="/login" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
 						<div className="nav-link">Login</div>
 					</li>
@@ -22,7 +22,7 @@ const Navbar = (props) => {
 			</ul>
 		) : (
 			<ul className="navbar-nav ml-auto">
-				<Link to="/">
+				<Link to="/" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
 						<div className="nav-link" onClick={props.handleLogout}>
 							Logout

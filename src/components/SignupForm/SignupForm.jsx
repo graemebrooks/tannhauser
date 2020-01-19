@@ -7,7 +7,11 @@ import styled from 'styled-components';
 const Div = styled.div`
 	width: 70%;
 	margin-top: 6rem;
-	background: ${(props) => props.theme.pulsarPurple};
+	background: url(https://4.bp.blogspot.com/-JW96Kj_bjP4/WbvxnOO3ooI/AAAAAAAAGXc/5JdNIwfzJBc5mofHzgWaZKNaSpmqSt1vwCLcBGAs/s1600/candy.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 5px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 10px;
 	padding: 10px;
 
