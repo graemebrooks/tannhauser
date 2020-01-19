@@ -8,8 +8,6 @@ module.exports = {
 
 async function create(req, res) {
 	try {
-		console.log('receiving input!');
-		console.log(req.body.movieTitle);
 		newMovie = await new Movie({
 			movieTitle: req.body.movieTitle,
 			tmdbId: req.body.tmdbId,
@@ -20,7 +18,8 @@ async function create(req, res) {
 			watchedStatus: req.body.watchedStatus,
 			wantToWatchStatus: req.body.wantToWatchStatus,
 			userDateWatched: req.body.userDateWatched,
-			userRating: req.body.userRating
+			userRating: req.body.userRating,
+			userId: req.body.userId
 		});
 		newMovie.save(function(err, movie) {
 			console.log(movie);

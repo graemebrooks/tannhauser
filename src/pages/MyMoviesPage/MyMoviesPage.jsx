@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { retrieveMovies } from '../../services/retrieve-movies';
+import { deleteMovieService } from '../../services/delete-movie-service';
 
 import MoviesSubNav from '../../components/MoviesSubNav/MoviesSubNav';
 import LibraryContainer from '../../components/LibraryContainer/LibraryContainer';
@@ -25,12 +26,17 @@ const MyMoviesPage = (props) => {
 		const fetchData = async () => {
 			setData({ ...data, isLoading: true });
 			const result = await retrieveMovies();
-			console.log('updating library state');
 			setData({ ...data, movies: result });
 		};
 		fetchData();
 		setData({ ...data, isLoading: false });
 	}, []);
+
+	const deleteMovie = (movieId) => {
+		deleteMovieService(movieId);
+		console.log('deleting...');
+		setData({ ...data, movies: data.movies.filter((movie) => movie._id !== movieId) });
+	};
 
 	return data.isLoading ? (
 		<div>Loading</div>
@@ -43,7 +49,7 @@ const MyMoviesPage = (props) => {
 				handleMovieDetailClick={props.handleMovieDetailClick}
 				clearSearch={props.clearSearch}
 			/>
-			<LibraryContainer movies={data.movies} />
+			<LibraryContainer deleteMovie={deleteMovie} movies={data.movies} />
 		</Div>
 	);
 };

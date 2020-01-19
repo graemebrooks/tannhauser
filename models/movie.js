@@ -34,7 +34,8 @@ const movieSchema = new Schema(
 			type: Number,
 			min: 1,
 			max: 100
-		}
+		},
+		userId: String
 	},
 	{ timestamps: true }
 );

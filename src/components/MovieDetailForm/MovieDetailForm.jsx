@@ -35,7 +35,6 @@ const MovieDetailForm = (props) => {
 			...formData,
 			[e.target.name]: e.target.value
 		});
-		console.log(formData);
 	};
 
 	let releaseYear = props.currentMovie.release_date.substring(0, 4);
@@ -50,7 +49,8 @@ const MovieDetailForm = (props) => {
 		watchedStatus: formData.hasSeen === 'on' ? true : false,
 		wantToWatchStatus: formData.wantToWatch === 'on' ? true : false,
 		userDateWatched: formData.dateWatched,
-		userRating: 99
+		userRating: 95,
+		userId: props.user._id
 	};
 
 	return (

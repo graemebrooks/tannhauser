@@ -14,8 +14,15 @@ const LibraryContainer = (props) => {
 	return (
 		<Div>
 			{props.movies[0] !== null ? (
-				props.movies.map((movieItem) => {
-					return <MovieCard movie={movieItem} hasWatched={movieItem.watchedStatus} />;
+				props.movies.map((movieItem, i) => {
+					return (
+						<MovieCard
+							key={i}
+							movie={movieItem}
+							hasWatched={movieItem.watchedStatus}
+							deleteMovie={props.deleteMovie}
+						/>
+					);
 				})
 			) : (
 				<p>No movies yet!</p>

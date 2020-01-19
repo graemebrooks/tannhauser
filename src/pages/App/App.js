@@ -115,6 +115,7 @@ class App extends React.Component {
 								exact
 								render={(props) => (
 									<MovieDetailPage
+										user={this.state.user}
 										currentMovie={this.state.currentMovie}
 										handleMovieDetailSubmit={this.handleMovieDetailSubmit}
 										{...props}

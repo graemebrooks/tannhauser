@@ -15,6 +15,7 @@ const MovieDetailPage = (props) => {
 		<Main>
 			<H1>Movie Details</H1>
 			<MovieDetailForm
+				user={props.user}
 				currentMovie={props.currentMovie}
 				handleMovieDetailSubmit={props.handleMovieDetailSubmit}
 			/>
