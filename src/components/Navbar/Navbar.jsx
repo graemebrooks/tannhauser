@@ -53,20 +53,22 @@ const Navbar = (props) => {
 				</button>
 
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav mr-auto">
-						<Link to="" style={{ textDecoration: 'none' }}>
-							<li className="nav-item active">
-								<div className="nav-link">
-									Dashboard <span className="sr-only">(current)</span>
-								</div>
-							</li>
-						</Link>
-						<Link to="/myMovies" style={{ textDecoration: 'none' }}>
-							<li className="nav-item">
-								<div className="nav-link">Library</div>
-							</li>
-						</Link>
-					</ul>
+					{props.user && (
+						<ul className="navbar-nav mr-auto">
+							<Link to="" style={{ textDecoration: 'none' }}>
+								<li className="nav-item active">
+									<div className="nav-link">
+										Dashboard <span className="sr-only">(current)</span>
+									</div>
+								</li>
+							</Link>
+							<Link to="/myMovies" style={{ textDecoration: 'none' }}>
+								<li className="nav-item">
+									<div className="nav-link">Library</div>
+								</li>
+							</Link>
+						</ul>
+					)}
 					{authNav}
 				</div>
 			</nav>
