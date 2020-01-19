@@ -6,8 +6,7 @@ import { deleteMovieService } from '../../services/delete-movie-service';
 
 const Div = styled.div`
 	color: white;
-	width: 60vw;
-	/* height: 50px; */
+	width: 95%;
 	margin: 20px;
 	background: black;
 	display: flex;
@@ -21,10 +20,10 @@ const MovieCard = (props) => {
 		<Div movie={props.movie}>
 			<img src={props.movie.moviePosterUrl} />
 			<div>
-				<h2>{props.movie.movieTitle}</h2>
+				<h2>
+					{props.movie.movieTitle} ({props.movie.movieReleaseYear})
+				</h2>
 				<p>{props.movie.moviePlotSummary}</p>
-				<p>Watched: {props.movie.watchedStatus ? 'Watched' : 'Have not watched'}</p>
-				<p>MongoId: {props.movie._id}</p>
 			</div>
 			<button onClick={() => props.deleteMovie(props.movie._id)} className="btn btn-danger">
 				Delete

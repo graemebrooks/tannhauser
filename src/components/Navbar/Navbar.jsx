@@ -66,19 +66,6 @@ const Navbar = (props) => {
 								<div className="nav-link">Library</div>
 							</li>
 						</Link>
-						<li className="nav-item dropdown">
-							<div
-								className="nav-link dropdown-toggle"
-								href="#"
-								id="navbarDropdown"
-								role="button"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false"
-							>
-								Dropdown
-							</div>
-						</li>
 					</ul>
 					{authNav}
 				</div>

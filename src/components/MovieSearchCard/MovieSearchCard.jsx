@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const Card = styled.div`
 	display: flex;
 	background: ${(props) => props.theme.backgroundBlack};
-	border: solid 2px ${(props) => props.theme.royRed};
+	border: solid 2px ${(props) => props.theme.pulsarPurple};
 	width: 70%;
 	padding: 10px;
 	color: white;
 	&:hover {
-		background: ${(props) => props.theme.royRed};
+		background: ${(props) => props.theme.pulsarPurple};
 	}
 
 	img {
@@ -38,7 +38,6 @@ function MovieSearchCard(props) {
 					<h3>
 						{props.movie.title} ({releaseYear})
 					</h3>
-					<p>{props.movie.overview}</p>
 				</Card>
 			</div>
 		</Link>

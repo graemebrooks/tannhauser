@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 
+import styled from 'styled-components';
+
+const Div = styled.div`
+	width: 70%;
+	margin-top: 6rem;
+	background: ${(props) => props.theme.pulsarPurple};
+	border-radius: 10px;
+	padding: 10px;
+
+	h2 {
+		margin-bottom: 30px;
+		margin-left: 25px;
+	}
+
+	button {
+		color: white;
+		width: 100%;
+		background: ${(props) => props.theme.primaryGreen};
+	}
+`;
+
 class SignupForm extends Component {
 	state = {
 		name: '',
@@ -33,13 +54,18 @@ class SignupForm extends Component {
 	};
 
 	isFormInvalid() {
-		return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+		return !(
+			this.state.name &&
+			this.state.email &&
+			this.state.password === this.state.passwordConf &&
+			this.state.password.length > 2
+		);
 	}
 
 	render() {
 		return (
-			<div>
-				<header className="header-footer">Sign Up</header>
+			<Div>
+				<h2>Sign Up</h2>
 				<form className="form-horizontal" onSubmit={this.handleSubmit}>
 					<div className="form-group">
 						<div className="col-sm-12">
@@ -94,11 +120,10 @@ class SignupForm extends Component {
 							<button className="btn btn-default" disabled={this.isFormInvalid()}>
 								Sign Up
 							</button>&nbsp;&nbsp;
-							<Link to="/">Cancel</Link>
 						</div>
 					</div>
 				</form>
-			</div>
+			</Div>
 		);
 	}
 }

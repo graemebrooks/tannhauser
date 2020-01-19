@@ -37,6 +37,7 @@ function MovieSearch(props) {
 
 	return (
 		<Div>
+			<FontAwesomeIcon icon={faSearch} />
 			<Input value={props.value} onChange={(e) => props.onChangeHandler(e)} placeholder="Search movies..." />
 			{props.movies ? (
 				<Ul>
@@ -52,7 +53,6 @@ function MovieSearch(props) {
 					})}
 				</Ul>
 			) : null}
-			<FontAwesomeIcon icon={faSearch} />
 		</Div>
 	);
 }

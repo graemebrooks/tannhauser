@@ -16,7 +16,6 @@ const Nav = styled.nav`
 const MoviesSubNav = (props) => {
 	return (
 		<Nav>
-			<div>Movies Sub Nav</div>
 			<MovieSearch
 				movies={props.movies}
 				value={props.value}
