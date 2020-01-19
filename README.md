@@ -2,10 +2,10 @@
 
 ## Introduction
 
-Lorem ipsum.
+Tannhauser is an application that allows you to track, rate, and share both the movies you've seen, and want to see, in one seamless single page application. Tannhauser, a universe of film to explore!
 
-<img src="" alt="Landing page" width="600"/>
-<img src="" alt="Homes index page" width="600"/>
+<!-- <img src="" alt="Landing page" width="600"/>
+<img src="" alt="Homes index page" width="600"/> -->
 
 ### Deployed Link:
 
@@ -17,10 +17,15 @@ Lorem ipsum.
 - HTML/CSS/JS
 - Node/Express
 - MongoDB
+- JSON Web Tokens
+ 
 
-### Third Party APIs:
+### Third Party APIs and Libraries:
 
-- OMDb 
+- TMDb API
+- Bcrypt
+- Styled Components
+- Framer Motion
 
 ## Planning
 

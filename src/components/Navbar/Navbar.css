@@ -1,6 +1,7 @@
 .navbar {
 	/* background: #642fd6; */
 	background: transparent;
+	border-bottom: solid 5px #642fd6;
 }
 
 .navbar-brand {

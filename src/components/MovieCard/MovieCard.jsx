@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { deleteMovieService } from '../../services/delete-movie-service';
 
+import MovieButtonContainer from '../../components/MovieButtonContainer/MovieButtonContainer';
+
 const Div = styled.div`
 	color: white;
 	width: 95%;
@@ -28,17 +30,11 @@ const MovieCard = (props) => {
 					<p>{props.movie.moviePlotSummary}</p>
 					<p>{props.movie.userRating}</p>
 				</div>
-				<Link
-					to="/movieDetail"
-					onClick={(movie) => props.handleMovieDetailClick(props.movie)}
+				<MovieButtonContainer
 					movie={props.movie}
-					style={{ textDecoration: 'none' }}
-				>
-					<button className="btn btn-primary">Update</button>
-				</Link>
-				<button onClick={() => props.deleteMovie(props.movie._id)} className="btn btn-danger">
-					Delete
-				</button>
+					handleMovieDetailClick={props.handleMovieDetailClick}
+					deleteMovie={props.deleteMovie}
+				/>
 			</Div>
 		</motion.div>
 	);
