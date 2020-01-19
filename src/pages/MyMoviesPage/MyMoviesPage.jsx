@@ -6,6 +6,7 @@ import { deleteMovieService } from '../../services/delete-movie-service';
 
 import MoviesSubNav from '../../components/MoviesSubNav/MoviesSubNav';
 import LibraryContainer from '../../components/LibraryContainer/LibraryContainer';
+import Loader from '../../components/Loader/Loader';
 
 const Div = styled.div`
 	color: white;
@@ -19,17 +20,20 @@ const Div = styled.div`
 const MyMoviesPage = (props) => {
 	const [ data, setData ] = useState({
 		movies: [ {} ],
-		isLoading: false
+		isLoading: true
 	});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setData({ ...data, isLoading: true });
 			const result = await retrieveMovies();
-			setData({ ...data, movies: result });
+			let sleep = (milliseconds) => {
+				return new Promise((resolve) => setTimeout(resolve, milliseconds));
+			};
+			await sleep(500);
+			setData({ isLoading: false, movies: result });
 		};
 		fetchData();
-		setData({ ...data, isLoading: false });
 	}, []);
 
 	const deleteMovie = (movieId) => {
@@ -39,7 +43,7 @@ const MyMoviesPage = (props) => {
 	};
 
 	return data.isLoading ? (
-		<div>Loading</div>
+		<Loader />
 	) : (
 		<Div>
 			<MoviesSubNav

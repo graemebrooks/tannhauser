@@ -9,13 +9,13 @@ const Input = styled.input`
 	background: ${(props) => props.theme.lightyearGray};
 	padding: 5px;
 	margin: 3px;
-	border: 2px solid ${(props) => props.theme.royRed};
+	border: 2px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 5px;
 	color: white;
 	width: 50%;
 	&:focus {
 		outline: none !important;
-		border: 2px solid #75161d;
+		border: 2px solid ${(props) => props.theme.primaryGreen};
 		background: ${(props) => props.theme.backgroundBlack};
 	}
 `;
@@ -31,14 +31,13 @@ const Ul = styled.ul`
 const Div = styled.div`width: 100%;`;
 
 function MovieSearch(props) {
-
 	useEffect(() => {
 		return () => props.clearSearch();
-	}, [])
+	}, []);
 
 	return (
 		<Div>
-			<Input value={props.value} onChange={(e) => props.onChangeHandler(e)} placeholder="Add movies" />
+			<Input value={props.value} onChange={(e) => props.onChangeHandler(e)} placeholder="Search movies..." />
 			{props.movies ? (
 				<Ul>
 					{props.movies.map((movie) => {

@@ -12,14 +12,6 @@ const Div = styled.div`
 		display: flex;
 		flex-direction: column;
 		padding: 5px;
-		/* .checkbox > input {
-			height: 25px;
-			width: 25px;
-			appearance: none;
-			border: 1px solid ${(props) => props.theme.royRed};
-			transition-duration: 0.3s;
-			background-color: white;
-		} */
 	}
 `;
 

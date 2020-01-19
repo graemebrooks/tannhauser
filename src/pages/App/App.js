@@ -17,9 +17,10 @@ import LoginPage from '../LoginPage/LoginPage';
 
 const theme = {
 	primaryGreen: '#11e996',
+	pulsarPurple: '#642fd6',
 	orbitalOrange: '#ef9145',
 	backgroundBlack: '#282828',
-	subNavGray: '#4d4d4d',
+	subNavGray: '#1f1f1f',
 	lightyearGray: '#999999',
 	galacticGold: '#ebc334',
 	royRed: '#e02835',

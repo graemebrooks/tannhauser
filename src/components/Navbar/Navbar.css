@@ -1,5 +1,5 @@
 .navbar {
-	background: #e02835;
+	background: #642fd6;
 }
 
 .navbar-brand {
@@ -17,7 +17,7 @@
 }
 
 .navbar .nav-link:hover {
-	color: #75161d;
+	color: #11e996;
 }
 
 .fa-bars {
