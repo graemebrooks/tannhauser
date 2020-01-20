@@ -13,6 +13,8 @@ import Navbar from '../../components/Navbar/Navbar';
 import MyMoviesPage from '../MyMoviesPage/MyMoviesPage';
 import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
 import LandingPage from '../LandingPage/LandingPage';
+import ComparePage from '../ComparePage/ComparePage';
+import DashboardPage from '../DashboardPage/DashboardPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 
@@ -136,6 +138,8 @@ class App extends React.Component {
 									/>
 								)}
 							/>
+							<Route path="/compare" exact render={(props) => <ComparePage />} />
+							<Route path="/dashboard" exact render={(props) => <DashboardPage />} />
 							<Route
 								path="/signup"
 								exact
