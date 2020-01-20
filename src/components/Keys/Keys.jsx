@@ -29,7 +29,7 @@ const Div = styled.nav`
 	}
 
 	.again {
-		background: ${(props) => props.theme.orbitalOrange};
+		background: ${(props) => props.theme.galacticGold};
 	}
 
 	p {

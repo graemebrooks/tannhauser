@@ -14,8 +14,7 @@ const Div = styled.div`
 	background: black;
 	display: flex;
 	flex-direction: row;
-	border-left: solid 10px
-		${(props) => (props.movie.watchedStatus ? `${props.theme.primaryGreen}` : `${props.theme.royRed}`)};
+	border-left: solid 10px ${(props) => props.getStatusColor(props.movie)};
 	.rating {
 		color: ${(props) => props.getRatingColor(props.movie.userRating)};
 	}
@@ -23,8 +22,6 @@ const Div = styled.div`
 
 const MovieCard = (props) => {
 	let getRatingColor = (rating) => {
-		console.log('color rating...');
-		console.log(rating);
 		if (rating > 90) {
 			return '#2bdded';
 		} else if (rating > 80) {
@@ -38,9 +35,21 @@ const MovieCard = (props) => {
 		}
 	};
 
+	let getStatusColor = (movieData) => {
+		if (movieData.watchedStatus && !movieData.wantToWatchStatus) {
+			return '#11e996';
+		} else if (movieData.watchedStatus && movieData.wantToWatchStatus) {
+			return '#ebc334';
+		} else if (!movieData.watchedStatus && movieData.wantToWatchStatus) {
+			return '#2bdded';
+		} else if (!movieData.watchedStatus && !movieData.wantToWatchStatus) {
+			return '#e02835';
+		}
+	};
+
 	return (
 		<motion.div>
-			<Div movie={props.movie} getRatingColor={getRatingColor}>
+			<Div movie={props.movie} getRatingColor={getRatingColor} getStatusColor={getStatusColor}>
 				<img src={props.movie.moviePosterUrl} />
 				<div>
 					<h2>
