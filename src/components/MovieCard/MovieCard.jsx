@@ -16,19 +16,38 @@ const Div = styled.div`
 	flex-direction: row;
 	border-left: solid 10px
 		${(props) => (props.movie.watchedStatus ? `${props.theme.primaryGreen}` : `${props.theme.royRed}`)};
+	.rating {
+		color: ${(props) => props.getRatingColor(props.movie.userRating)};
+	}
 `;
 
 const MovieCard = (props) => {
+	let getRatingColor = (rating) => {
+		console.log('color rating...');
+		console.log(rating);
+		if (rating > 90) {
+			return '#2bdded';
+		} else if (rating > 80) {
+			return '#11e996';
+		} else if (rating > 70) {
+			return '#ebc334';
+		} else if (rating > 60) {
+			return '#ef9145';
+		} else {
+			return '#e02835';
+		}
+	};
+
 	return (
 		<motion.div>
-			<Div movie={props.movie}>
+			<Div movie={props.movie} getRatingColor={getRatingColor}>
 				<img src={props.movie.moviePosterUrl} />
 				<div>
 					<h2>
 						{props.movie.movieTitle} ({props.movie.movieReleaseYear})
 					</h2>
 					<p>{props.movie.moviePlotSummary}</p>
-					<p>{props.movie.userRating}</p>
+					<h2 className="rating">{props.movie.userRating}</h2>
 				</div>
 				<MovieButtonContainer
 					movie={props.movie}

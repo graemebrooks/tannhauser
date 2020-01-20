@@ -6,21 +6,31 @@ import MovieDetailInfo from '../../components/MovieDetailInfo/MovieDetailInfo';
 
 const Main = styled.main`
 	height: 100vh;
-	background: ${(props) => props.theme.backgroundBlack};
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	background: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	section {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 90vw;
+		border: 5px solid ${(props) => props.theme.pulsarPurple};
+		border-radius: 10px;
+	}
 `;
 
 const MovieDetailPage = (props) => {
 	return (
 		<Main>
-			<MovieDetailInfo currentMovie={props.currentMovie} />
-			<MovieDetailForm
-				user={props.user}
-				currentMovie={props.currentMovie}
-				handleMovieDetailSubmit={props.handleMovieDetailSubmit}
-				handleMovieDetailUpdate={props.handleMovieDetailUpdate}
-			/>
+			<section>
+				<MovieDetailInfo currentMovie={props.currentMovie} />
+				<MovieDetailForm
+					user={props.user}
+					currentMovie={props.currentMovie}
+					handleMovieDetailSubmit={props.handleMovieDetailSubmit}
+					handleMovieDetailUpdate={props.handleMovieDetailUpdate}
+				/>
+			</section>
 		</Main>
 	);
 };

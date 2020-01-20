@@ -16,7 +16,7 @@ const Card = styled.div`
 	}
 
 	img {
-		height: 15rem;
+		height: 8rem;
 	}
 
 	h3 {
@@ -36,7 +36,7 @@ function MovieSearchCard(props) {
 				<Card>
 					<img alt="Movie Poster" src={`http://image.tmdb.org/t/p/w185${props.movie.poster_path}`} />
 					<h3>
-						{props.movie.title} ({releaseYear})
+						{props.movie.title} {releaseYear && `(${releaseYear})`}
 					</h3>
 				</Card>
 			</div>

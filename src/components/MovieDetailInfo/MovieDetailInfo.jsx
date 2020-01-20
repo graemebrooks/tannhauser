@@ -2,11 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Div = styled.div`
-	* {
-		color: white;
-	}
-`;
+const Div = styled.div`padding: 2rem;`;
 
 const MovieDetailInfo = (props) => {
 	return props.currentMovie._id ? (

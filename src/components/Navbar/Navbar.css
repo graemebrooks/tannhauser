@@ -9,7 +9,7 @@
 }
 
 .navbar-brand img {
-	fill: red !important;
+	fill: red;
 	width: 10rem;
 }
 

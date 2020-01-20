@@ -12,7 +12,7 @@ const Input = styled.input`
 	border: 2px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 5px;
 	color: white;
-	width: 50%;
+	width: 60%;
 	&:focus {
 		outline: none !important;
 		border: 2px solid ${(props) => props.theme.primaryGreen};
@@ -25,7 +25,9 @@ const Ul = styled.ul`
 	overflow-y: auto;
 	z-index: 5;
 	position: absolute;
-	width: 100%;
+	width: 60%;
+	list-style-type: none;
+	padding: 0;
 `;
 
 const Div = styled.div`width: 100%;`;

@@ -25,7 +25,8 @@ const theme = {
 	lightyearGray: '#999999',
 	galacticGold: '#ebc334',
 	royRed: '#e02835',
-	radonRust: '#75161d'
+	radonRust: '#75161d',
+	boronBlue: '#2bdded'
 };
 
 class App extends React.Component {

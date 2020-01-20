@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 import logo from '../../thtransparent.svg';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -11,12 +12,16 @@ const Navbar = (props) => {
 			<ul className="navbar-nav ml-auto">
 				<Link to="/signup" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<div className="nav-link">Signup</div>
+						<motion.div className="nav-link" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+							Signup
+						</motion.div>
 					</li>
 				</Link>
 				<Link to="/login" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<div className="nav-link">Login</div>
+						<motion.div className="nav-link" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+							Login
+						</motion.div>
 					</li>
 				</Link>
 			</ul>
@@ -24,9 +29,14 @@ const Navbar = (props) => {
 			<ul className="navbar-nav ml-auto">
 				<Link to="/" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<div className="nav-link" onClick={props.handleLogout}>
+						<motion.div
+							className="nav-link"
+							onClick={props.handleLogout}
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+						>
 							Logout
-						</div>
+						</motion.div>
 					</li>
 				</Link>
 			</ul>
@@ -36,9 +46,9 @@ const Navbar = (props) => {
 		<div>
 			<nav className="navbar navbar-expand-lg">
 				<Link to="/" style={{ textDecoration: 'none' }}>
-					<div className="navbar-brand" href="#">
+					<motion.div className="navbar-brand" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
 						<img src={logo} alt="logo" />
-					</div>
+					</motion.div>
 				</Link>
 				<button
 					className="navbar-toggler"
@@ -57,14 +67,35 @@ const Navbar = (props) => {
 						<ul className="navbar-nav mr-auto">
 							<Link to="" style={{ textDecoration: 'none' }}>
 								<li className="nav-item active">
-									<div className="nav-link">
+									<motion.div
+										className="nav-link"
+										whileHover={{ scale: 1.1 }}
+										whileTap={{ scale: 0.9 }}
+									>
 										Dashboard <span className="sr-only">(current)</span>
-									</div>
+									</motion.div>
 								</li>
 							</Link>
 							<Link to="/myMovies" style={{ textDecoration: 'none' }}>
 								<li className="nav-item">
-									<div className="nav-link">Library</div>
+									<motion.div
+										className="nav-link"
+										whileHover={{ scale: 1.1 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										Library
+									</motion.div>
+								</li>
+							</Link>
+							<Link to="/myMovies" style={{ textDecoration: 'none' }}>
+								<li className="nav-item">
+									<motion.div
+										className="nav-link"
+										whileHover={{ scale: 1.1 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										Compare
+									</motion.div>
 								</li>
 							</Link>
 						</ul>

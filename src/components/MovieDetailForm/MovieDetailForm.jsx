@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Div = styled.div`
-	border: solid 2px ${(props) => props.theme.royRed};
+	/* border: solid 2px ${(props) => props.theme.pulsarPurple}; */
 	background: ${(props) => props.theme.subNavGray};
 	display: flex;
 	flex-direction: column;
-	width: 40%;
+	width: 60%;
+	height: 80vh;
+	margin-left: auto
 	form {
 		display: flex;
 		flex-direction: column;
-		padding: 5px;
+		padding: 15px;
 	}
+	.btn-submit {
+			background: ${(props) => props.theme.primaryGreen};
+		}
 `;
 
 const MovieDetailForm = (props) => {
@@ -31,6 +36,8 @@ const MovieDetailForm = (props) => {
 					rating: 50
 				}
 	);
+
+	const [ watchedForm, setWatchedForm ] = useState(false);
 
 	const onFormChange = (e) => {
 		setFormData({
@@ -80,20 +87,20 @@ const MovieDetailForm = (props) => {
 		<Div>
 			<form>
 				<label className="checkbox">
+					<span>I have seen this movie </span>
 					<input onChange={onFormChange} type="checkbox" name="hasSeen" checked={formData.hasSeen} />
-					<span> Have Seen</span>
 				</label>
 				<label className="">
+					<span>Watched on: </span>
 					<input onChange={onFormChange} type="date" name="dateWatched" value={formData.dateWatched} />
-					<span> Date Seen</span>
 				</label>
 				<label className="checkbox">
+					<span>I want to watch this movie </span>
 					<input type="checkbox" name="wantToWatch" onChange={onFormChange} checked={formData.wantToWatch} />
-					<span> Want to Watch</span>
 				</label>
 				<label className="number">
+					<span>Rating </span>
 					<input type="number" name="rating" onChange={onFormChange} value={formData.rating} />
-					<span> Rating</span>
 				</label>
 				<button
 					onClick={
@@ -103,7 +110,7 @@ const MovieDetailForm = (props) => {
 							(e) => props.handleMovieDetailSubmit(e, movieData)
 						)
 					}
-					className="btn btn-danger"
+					className="btn btn-submit"
 				>
 					Submit
 				</button>

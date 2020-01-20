@@ -10,7 +10,7 @@ const Div = styled.nav`
 	background: transparent;
 	border: solid 1px ${(props) => props.theme.lightyearGray};
 	border-radius: 10px;
-	width: 300px;
+	width: 725px;
 	padding: 10px;
 
 	.keyBox {
@@ -18,6 +18,18 @@ const Div = styled.nav`
 		width: 10px;
 		margin: 0 10px;
 		background: ${(props) => props.theme.primaryGreen};
+	}
+
+	.haveNot {
+		background: ${(props) => props.theme.royRed};
+	}
+
+	.wantTo {
+		background: ${(props) => props.theme.boronBlue};
+	}
+
+	.again {
+		background: ${(props) => props.theme.orbitalOrange};
 	}
 
 	p {
@@ -28,14 +40,14 @@ const Div = styled.nav`
 const Keys = (props) => {
 	return (
 		<Div>
-			<p>Keys!</p>
+			<p>Watched</p>
 			<div className="keyBox" />
-			<p>Keys!</p>
-			<div className="keyBox" />
-			<p>Keys!</p>
-			<div className="keyBox" />
-			<p>Keys!</p>
-			<div className="keyBox" />
+			<p>Watch Again</p>
+			<div className="keyBox again" />
+			<p>Want to</p>
+			<div className="keyBox wantTo" />
+			<p>Have not</p>
+			<div className="keyBox haveNot" />
 		</Div>
 	);
 };
