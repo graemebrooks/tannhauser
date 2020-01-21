@@ -48,7 +48,7 @@ const MyMoviesPage = (props) => {
 
 	return data.isLoading ? (
 		<Loader />
-	) : (
+	) : data.movies[0] ? (
 		<Div>
 			<MoviesSubNav
 				movies={props.movies}
@@ -62,6 +62,18 @@ const MyMoviesPage = (props) => {
 				deleteMovie={deleteMovie}
 				movies={data.movies}
 			/>
+		</Div>
+	) : (
+		<Div>
+			<MoviesSubNav
+				movies={props.movies}
+				value={props.value}
+				onChangeHandler={(e) => props.onChangeHandler(e)}
+				handleMovieDetailClick={props.handleMovieDetailClick}
+				clearSearch={props.clearSearch}
+			/>
+
+			<h2>Add some movies!</h2>
 		</Div>
 	);
 };

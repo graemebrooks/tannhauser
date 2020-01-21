@@ -6,6 +6,7 @@ const movieCtrl = require('../controllers/movies');
 router.use(require('../config/auth'));
 router.post('/', movieCtrl.create);
 router.get('/index', movieCtrl.index);
+router.get('/compareIndex/:id', movieCtrl.compareIndex);
 router.delete('/:id', movieCtrl.delete);
 router.put('/:id', movieCtrl.update);
 

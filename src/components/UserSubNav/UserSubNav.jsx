@@ -27,7 +27,7 @@ const Nav = styled.nav`
 const UserSubNav = (props) => {
 	return (
 		<Nav>
-			<UserSearch />
+			<UserSearch handleUserClick={props.handleUserClick} />
 			<button className="btn btn-compare">Compare with this user</button>
 		</Nav>
 	);

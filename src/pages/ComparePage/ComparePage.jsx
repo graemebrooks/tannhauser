@@ -14,32 +14,46 @@ const Div = styled.div``;
 const ComparePage = (props) => {
 	const [ data, setData ] = useState({
 		movies: [ {} ],
-		isLoading: true
+		isLoading: false
 	});
 
-	useEffect(() => {
-		// const fetchData = async () => {
-		// 	setData({ ...data, isLoading: true });
-		// 	const result = await retrieveMovies();
-		// 	let sleep = (milliseconds) => {
-		// 		return new Promise((resolve) => setTimeout(resolve, milliseconds));
-		// 	};
-		// 	await sleep(750);
-		// 	setData({ isLoading: false, movies: result });
-		// };
-		// fetchData();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		setData({ ...data, isLoading: true });
+	// 		const result = await retrieveMovies();
+	// 		let sleep = (milliseconds) => {
+	// 			return new Promise((resolve) => setTimeout(resolve, milliseconds));
+	// 		};
+	// 		await sleep(750);
+	// 		setData({ isLoading: false, movies: result });
+	// 	};
+	// 	fetchData();
+	// }, []);
 
-	return data.movies[0].movieTitle ? data.isLoading ? (
+	let handleUserClick = (user) => {
+		const fetchData = async () => {
+			setData({ ...data, isLoading: true });
+			const result = await retrieveMovies(user);
+			let sleep = (milliseconds) => {
+				return new Promise((resolve) => setTimeout(resolve, milliseconds));
+			};
+			await sleep(750);
+			console.log(`result from handle user click: ${result}`);
+			setData({ isLoading: false, movies: result });
+		};
+		fetchData();
+	};
+
+	return data.movies[0] ? data.isLoading ? (
 		<Loader />
 	) : (
 		<Div>
-			<UserSubNav />
+			<UserSubNav handleUserClick={handleUserClick} />
 			<LibraryContainer handleMovieDetailClick={props.handleMovieDetailClick} movies={data.movies} />
 		</Div>
 	) : (
 		<div>
-			<UserSubNav />
+			<UserSubNav handleUserClick={handleUserClick} />
 			<p>Search a user!</p>
 		</div>
 	);

@@ -4,7 +4,8 @@ module.exports = {
 	create,
 	index,
 	delete: deleteMovie,
-	update
+	update,
+	compareIndex
 };
 
 async function create(req, res) {
@@ -34,7 +35,17 @@ async function create(req, res) {
 async function index(req, res) {
 	try {
 		movies = await Movie.find({ userId: req.user._id });
-		res.status(201).json(movies);
+		res.status(200).json(movies);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+}
+
+async function compareIndex(req, res) {
+	try {
+		console.log(`Compare index: ${req.params.id}`);
+		movies = await Movie.find({ userId: req.params.id });
+		res.status(200).json(movies);
 	} catch (err) {
 		res.status(400).json(err);
 	}

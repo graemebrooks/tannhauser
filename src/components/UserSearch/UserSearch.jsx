@@ -21,20 +21,11 @@ const Input = styled.input`
 	}
 `;
 
-const Ul = styled.ul`
-	max-height: 500px;
-	overflow-y: auto;
-	z-index: 5;
-	position: absolute;
-	width: 60%;
-	list-style-type: none;
-	padding: 0;
-`;
-
 const Div = styled.div`
 	width: 100%;
 	ul {
-		background: pink;
+		background: ${(props) => props.theme.backgroundBlack};
+		border: solid 2px ${(props) => props.theme.pulsarPurple};
 		max-height: 500px;
 		overflow-y: auto;
 		z-index: 5;
@@ -42,6 +33,12 @@ const Div = styled.div`
 		width: 60%;
 		list-style-type: none;
 		padding: 0;
+	}
+	li:hover {
+		background: ${(props) => props.theme.pulsarPurple};
+	}
+	h3 {
+		margin: 0;
 	}
 `;
 
@@ -56,8 +53,11 @@ function UserSearch(props) {
 	});
 
 	let onUserSearchChange = async (e) => {
+		setSearchValue({ ...searchData, value: e.target.value });
+		if (searchValue.value === '') {
+			setSearchData({ ...searchData, users: [ {} ] });
+		}
 		if (e.target.value.length > 1) {
-			setSearchValue({ value: e.target.value });
 			let users = await retrieveUsers({ name: e.target.value });
 			setSearchData({ ...searchData, users: users });
 		}
@@ -79,16 +79,16 @@ function UserSearch(props) {
 		<Div>
 			<FontAwesomeIcon icon={faSearch} />
 			<Input value={searchData.value} onChange={(e) => onUserSearchChange(e)} placeholder="Search users..." />
-			{searchData.users[0].name ? (
-				<Ul>
+			{searchData.users[0] && searchData.users[0].name ? (
+				<ul>
 					{searchData.users.map((user) => {
 						return (
-							<li>
-								<p>{user.name}</p>
+							<li onClick={(e) => props.handleUserClick(user)}>
+								<h3>{user.name}</h3>
 							</li>
 						);
 					})}
-				</Ul>
+				</ul>
 			) : null}
 		</Div>
 	);
