@@ -9,7 +9,13 @@ import UserSubNav from '../../components/UserSubNav/UserSubNav';
 import LibraryContainer from '../../components/LibraryContainer/LibraryContainer';
 import Loader from '../../components/Loader/Loader';
 
-const Div = styled.div``;
+const Div = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+`;
 
 const ComparePage = (props) => {
 	const [ data, setData ] = useState({

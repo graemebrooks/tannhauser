@@ -34,7 +34,7 @@ const MyMoviesPage = (props) => {
 			let sleep = (milliseconds) => {
 				return new Promise((resolve) => setTimeout(resolve, milliseconds));
 			};
-			await sleep(750);
+			await sleep(1000);
 			setData({ isLoading: false, movies: result });
 		};
 		fetchData();
