@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import MovieSearch from '../../components/MovieSearch/MovieSearch';
+import UserSearch from '../../components/UserSearch/UserSearch';
 import Keys from '../../components/Keys/Keys';
 
 const Nav = styled.nav`
@@ -14,17 +14,20 @@ const Nav = styled.nav`
 	height: 3rem;
 	color: white;
 	.btn-compare {
-		/* border: solid 1px ${(props) => props.theme.lightyearGray}; */
 		border-radius: 10px;
-		background: ${(props) => props.theme.primaryGreen};
+		background: ${(props) => props.theme.pulsarPurple};
 		color: white;
 		margin-left: auto;
+		&:hover {
+			background: ${(props) => props.theme.primaryGreen};
+		}
 	}
 `;
 
 const UserSubNav = (props) => {
 	return (
 		<Nav>
+			<UserSearch />
 			<button className="btn btn-compare">Compare with this user</button>
 		</Nav>
 	);

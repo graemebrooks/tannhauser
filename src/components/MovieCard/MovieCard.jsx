@@ -18,6 +18,16 @@ const Div = styled.div`
 	.rating {
 		color: ${(props) => props.getRatingColor(props.movie.userRating)};
 	}
+	@media (max-width: 768px) {
+		flex-direction: column;
+		height: 20rem;
+		img {
+			height: 10rem;
+		}
+		.summary {
+			display: none;
+		}
+	}
 `;
 
 const MovieCard = (props) => {
@@ -55,7 +65,7 @@ const MovieCard = (props) => {
 					<h2>
 						{props.movie.movieTitle} ({props.movie.movieReleaseYear})
 					</h2>
-					<p>{props.movie.moviePlotSummary}</p>
+					<p className="summary">{props.movie.moviePlotSummary}</p>
 					<h2 className="rating">{props.movie.userRating}</h2>
 				</div>
 				<MovieButtonContainer

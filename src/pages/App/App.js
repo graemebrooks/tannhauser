@@ -138,7 +138,20 @@ class App extends React.Component {
 									/>
 								)}
 							/>
-							<Route path="/compare" exact render={(props) => <ComparePage />} />
+							<Route
+								path="/compare"
+								exact
+								render={(props) => (
+									<ComparePage
+										{...props}
+										movies={this.state.movieSearch.movies}
+										value={this.state.movieSearch.value}
+										onChangeHandler={this.onChangeHandler}
+										handleMovieDetailClick={this.handleMovieDetailClick}
+										clearSearch={this.clearSearch}
+									/>
+								)}
+							/>
 							<Route path="/dashboard" exact render={(props) => <DashboardPage />} />
 							<Route
 								path="/signup"

@@ -15,6 +15,10 @@ const Div = styled.div`
 	align-items: center;
 	height: 100vh;
 	width: 100vw;
+	@media (max-width: 768px) {
+		height: 100vh;
+		width: 100vw;
+	}
 `;
 
 const MyMoviesPage = (props) => {

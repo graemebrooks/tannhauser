@@ -10,6 +10,15 @@ const Div = styled.div`
 	background: ${(props) => props.theme.subNavGray};
 	border: 5px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 10px;
+	@media (max-width: 768px) {
+		width: 100vw;
+		background: ${(props) => props.theme.subNavGray};
+		border: none;
+		border-radius: 0px;
+		img {
+			height: 5rem;
+		}
+	}
 `;
 
 const LibraryContainer = (props) => {

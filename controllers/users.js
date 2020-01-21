@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
 	signup,
-	login
+	login,
+	search
 };
 
 async function login(req, res) {
@@ -33,6 +34,15 @@ async function signup(req, res) {
 		res.json({ token });
 	} catch (err) {
 		// Probably a duplicate email
+		res.status(400).json(err);
+	}
+}
+
+async function search(req, res) {
+	try {
+		users = await User.find({ name: { $regex: req.body.name, $options: 'i' } }, function(err, docs) {});
+		res.status(200).json(users);
+	} catch (err) {
 		res.status(400).json(err);
 	}
 }
