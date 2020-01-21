@@ -68,11 +68,13 @@ const MovieCard = (props) => {
 					<p className="summary">{props.movie.moviePlotSummary}</p>
 					<h2 className="rating">{props.movie.userRating}</h2>
 				</div>
-				<MovieButtonContainer
-					movie={props.movie}
-					handleMovieDetailClick={props.handleMovieDetailClick}
-					deleteMovie={props.deleteMovie}
-				/>
+				{props.movie.userId === props.user._id ? (
+					<MovieButtonContainer
+						movie={props.movie}
+						handleMovieDetailClick={props.handleMovieDetailClick}
+						deleteMovie={props.deleteMovie}
+					/>
+				) : null}
 			</Div>
 		</motion.div>
 	);

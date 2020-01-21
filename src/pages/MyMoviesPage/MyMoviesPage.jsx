@@ -61,6 +61,7 @@ const MyMoviesPage = (props) => {
 				handleMovieDetailClick={props.handleMovieDetailClick}
 				deleteMovie={deleteMovie}
 				movies={data.movies}
+				user={props.user}
 			/>
 		</Div>
 	) : (

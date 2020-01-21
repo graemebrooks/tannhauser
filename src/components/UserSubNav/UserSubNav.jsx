@@ -28,7 +28,9 @@ const UserSubNav = (props) => {
 	return (
 		<Nav>
 			<UserSearch handleUserClick={props.handleUserClick} />
-			<button className="btn btn-compare">Compare with this user</button>
+			<button className="btn btn-compare" onClick={() => props.handleCompareClick()}>
+				Compare with this user
+			</button>
 		</Nav>
 	);
 };

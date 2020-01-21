@@ -33,6 +33,7 @@ const LibraryContainer = (props) => {
 							handleMovieDetailClick={(movie) => props.handleMovieDetailClick(movie)}
 							hasWatched={movieItem.watchedStatus}
 							deleteMovie={props.deleteMovie}
+							user={props.user}
 						/>
 					);
 				})

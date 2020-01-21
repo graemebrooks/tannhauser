@@ -122,7 +122,7 @@ class App extends React.Component {
 										onChangeHandler={this.onChangeHandler}
 										handleMovieDetailClick={this.handleMovieDetailClick}
 										clearSearch={this.clearSearch}
-										user={this.user}
+										user={this.state.user}
 									/>
 								)}
 							/>
@@ -150,6 +150,7 @@ class App extends React.Component {
 										onChangeHandler={this.onChangeHandler}
 										handleMovieDetailClick={this.handleMovieDetailClick}
 										clearSearch={this.clearSearch}
+										user={this.state.user}
 									/>
 								)}
 							/>
