@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import ComparisonCard from '../../components/ComparisonCard/ComparisonCard';
+
 const Div = styled.div`
 	color: white;
 	width: 80vw;
@@ -8,6 +10,7 @@ const Div = styled.div`
 	background: ${(props) => props.theme.subNavGray};
 	border: 5px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 10px;
+	padding: 15px;
 	@media (max-width: 768px) {
 		width: 100vw;
 		background: ${(props) => props.theme.subNavGray};
@@ -121,6 +124,7 @@ const ComparisonContainer = (props) => {
 				);
 			}
 		});
+		console.log(comparisonArr);
 		return comparisonArr;
 	}
 
@@ -129,14 +133,7 @@ const ComparisonContainer = (props) => {
 	return (
 		<Div>
 			<h2>Comparison!</h2>
-			{comparisonMovies.map((movie) => (
-				<div>
-					<h2>{movie.title}</h2>
-					<p>You have watched: {movie.user1.hasWatched ? 'true' : 'false'}</p>
-					<p>Other user has watched: {movie.user2.hasWatched ? 'true' : 'false'}</p>
-					<p>Other user wants to watch: {movie.user2.wantToWatch === null ? 'null' : 'else'}</p>
-				</div>
-			))}
+			{comparisonMovies.map((movie) => <ComparisonCard movie={movie} />)}
 		</Div>
 	);
 };
