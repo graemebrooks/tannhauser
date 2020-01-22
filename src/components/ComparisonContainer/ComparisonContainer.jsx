@@ -33,11 +33,39 @@ const ComparisonContainer = (props) => {
 		let comparisonArr = [];
 		userMov.forEach((movie) => {
 			compareMov.forEach((compareMovie) => {
+				console.log('user movie: ' + movie.movieTitle);
+				console.log('compare movie: ' + compareMovie.movieTitle);
 				if (
 					movie.movieTitle === compareMovie.movieTitle &&
 					!(comparisonArr.filter((ele) => ele.title === movie.movieTitle).length > 0)
 				) {
-					console.log(movie.movieTitle);
+					console.log('inside duplicate' + movie.movieTitle);
+					comparisonArr.push(
+						new ComparisonObject(
+							movie.movieTitle,
+							movie.moviePosterUrl,
+							{
+								hasWatched: movie.watchedStatus,
+								wantToWatch: movie.wantToWatchStatus
+							},
+							{
+								hasWatched: compareMovie.watchedStatus,
+								wantToWatch: compareMovie.wantToWatchStatus
+							}
+						)
+					);
+				}
+			});
+		});
+		userMov.forEach((movie) => {
+			compareMov.forEach((compareMovie) => {
+				console.log('user movie: ' + movie.movieTitle);
+				console.log('compare movie: ' + compareMovie.movieTitle);
+				if (
+					movie.movieTitle === compareMovie.movieTitle &&
+					!(comparisonArr.filter((ele) => ele.title === movie.movieTitle).length > 0)
+				) {
+					console.log('inside duplicate' + movie.movieTitle);
 					comparisonArr.push(
 						new ComparisonObject(
 							movie.movieTitle,
@@ -57,6 +85,7 @@ const ComparisonContainer = (props) => {
 					userMov.filter((m) => m.movieTitle === movie.movieTitle).length > 0 &&
 					!(comparisonArr.filter((ele) => ele.title === movie.movieTitle).length > 0)
 				) {
+					console.log('not equal pushing' + movie.movieTitle);
 					comparisonArr.push(
 						new ComparisonObject(
 							movie.movieTitle,
@@ -102,9 +131,10 @@ const ComparisonContainer = (props) => {
 			<h2>Comparison!</h2>
 			{comparisonMovies.map((movie) => (
 				<div>
-					<p>{movie.title}</p>
+					<h2>{movie.title}</h2>
 					<p>You have watched: {movie.user1.hasWatched ? 'true' : 'false'}</p>
 					<p>Other user has watched: {movie.user2.hasWatched ? 'true' : 'false'}</p>
+					<p>Other user wants to watch: {movie.user2.wantToWatch === null ? 'null' : 'else'}</p>
 				</div>
 			))}
 		</Div>
