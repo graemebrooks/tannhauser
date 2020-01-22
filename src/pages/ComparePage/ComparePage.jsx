@@ -57,8 +57,6 @@ const ComparePage = (props) => {
 	let handleCompareClick = async (compareMovies) => {
 		let userMovies = await retrieveMovies();
 
-		console.log(userMovies);
-
 		setData({
 			...data,
 			comparison: {
