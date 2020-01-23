@@ -24,7 +24,7 @@ const MovieDetailForm = (props) => {
 	const [ formData, setFormData ] = useState(
 		props.currentMovie.userId
 			? {
-					hasSeen: props.currentMovie.watchedStatus ? 'on' : '',
+					hasSeen: props.currentMovie.watchedStatus,
 					dateWatched: props.currentMovie.userDateWatched,
 					wantToWatch: props.currentMovie.wantToWatchStatus,
 					rating: props.currentMovie.userRating
@@ -46,6 +46,14 @@ const MovieDetailForm = (props) => {
 		});
 	};
 
+	const onToggle = (e) => {
+		console.log(e.target.defaultChecked);
+		setFormData({
+			...formData,
+			[e.target.name]: !e.target.defaultChecked
+		});
+	};
+
 	let releaseYear;
 	if (!props.currentMovie.movieReleaseYear) {
 		releaseYear = props.currentMovie.release_date.substring(0, 4);
@@ -63,8 +71,8 @@ const MovieDetailForm = (props) => {
 				movieDirector: '',
 				moviePlotSummary: props.currentMovie.moviePlotSummary,
 				moviePosterUrl: props.currentMovie.moviePosterUrl,
-				watchedStatus: formData.hasSeen === 'on' ? true : false,
-				wantToWatchStatus: formData.wantToWatch === 'on' ? true : false,
+				watchedStatus: formData.hasSeen,
+				wantToWatchStatus: formData.wantToWatch,
 				userDateWatched: formData.dateWatched,
 				userRating: formData.rating,
 				userId: props.user._id
@@ -76,8 +84,8 @@ const MovieDetailForm = (props) => {
 				movieDirector: '',
 				moviePlotSummary: props.currentMovie.overview,
 				moviePosterUrl: `http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`,
-				watchedStatus: formData.hasSeen === 'on' ? true : false,
-				wantToWatchStatus: formData.wantToWatch === 'on' ? true : false,
+				watchedStatus: formData.hasSeen,
+				wantToWatchStatus: formData.wantToWatch,
 				userDateWatched: formData.dateWatched,
 				userRating: formData.rating,
 				userId: props.user._id
@@ -88,7 +96,7 @@ const MovieDetailForm = (props) => {
 			<form>
 				<label className="checkbox">
 					<span>I have seen this movie </span>
-					<input onChange={onFormChange} type="checkbox" name="hasSeen" checked={formData.hasSeen} />
+					<input onClick={onToggle} type="checkbox" name="hasSeen" defaultChecked={formData.hasSeen} />
 				</label>
 				<label className="">
 					<span>Watched on: </span>
@@ -96,7 +104,12 @@ const MovieDetailForm = (props) => {
 				</label>
 				<label className="checkbox">
 					<span>I want to watch this movie </span>
-					<input type="checkbox" name="wantToWatch" onChange={onFormChange} checked={formData.wantToWatch} />
+					<input
+						type="checkbox"
+						name="wantToWatch"
+						onClick={onToggle}
+						defaultChecked={formData.wantToWatch}
+					/>
 				</label>
 				<label className="number">
 					<span>Rating </span>
