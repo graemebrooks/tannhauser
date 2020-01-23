@@ -17,6 +17,21 @@ const Div = styled.div`
 	border-left: solid 10px ${(props) => props.getStatusColor(props.movie)};
 	.rating {
 		color: ${(props) => props.getRatingColor(props.movie.userRating)};
+		margin-left: auto;
+		padding: 5px;
+		border: solid 3px ${(props) => props.getRatingColor(props.movie.userRating)};
+		border-radius: 5px;
+	}
+	.ratingContainer {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		margin-top: auto;
+	}
+	.badge-pill {
+		border-radius: 8px;
+		padding: 2px 5px;
+		background: ${(props) => (props.movie.watchedStatus ? props.theme.primaryGreen : props.theme.royRed)};
 	}
 	@media (max-width: 768px) {
 		flex-direction: column;
@@ -66,7 +81,10 @@ const MovieCard = (props) => {
 						{props.movie.movieTitle} ({props.movie.movieReleaseYear})
 					</h2>
 					<p className="summary">{props.movie.moviePlotSummary}</p>
-					<h2 className="rating">{props.movie.userRating}</h2>
+					<span className="badge badge-pill">{props.movie.watchedStatus ? 'Seen' : "Haven't seen"}</span>
+					<div className="ratingContainer">
+						<h2 className="rating">{props.movie.userRating}</h2>
+					</div>
 				</div>
 				{props.movie.userId === props.user._id ? (
 					<MovieButtonContainer

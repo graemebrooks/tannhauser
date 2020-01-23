@@ -12,14 +12,14 @@ const Navbar = (props) => {
 			<ul className="navbar-nav ml-auto">
 				<Link to="/signup" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<motion.div className="nav-link" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 							Signup
 						</motion.div>
 					</li>
 				</Link>
 				<Link to="/login" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<motion.div className="nav-link" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 							Login
 						</motion.div>
 					</li>
@@ -29,12 +29,7 @@ const Navbar = (props) => {
 			<ul className="navbar-nav ml-auto">
 				<Link to="/" style={{ textDecoration: 'none' }}>
 					<li className="nav-item">
-						<motion.div
-							className="nav-link"
-							onClick={props.handleLogout}
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
-						>
+						<motion.div className="nav-link" onClick={props.handleLogout} whileTap={{ scale: 0.9 }}>
 							Logout
 						</motion.div>
 					</li>
@@ -46,7 +41,7 @@ const Navbar = (props) => {
 		<div>
 			<nav className="navbar navbar-expand-lg">
 				<Link to="/" style={{ textDecoration: 'none' }}>
-					<motion.div className="navbar-brand" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+					<motion.div className="navbar-brand" whileTap={{ scale: 0.9 }}>
 						<img src={logo} alt="logo" />
 					</motion.div>
 				</Link>
@@ -67,33 +62,21 @@ const Navbar = (props) => {
 						<ul className="navbar-nav mr-auto">
 							<Link to="/dashboard" style={{ textDecoration: 'none' }}>
 								<li className="nav-item active">
-									<motion.div
-										className="nav-link"
-										whileHover={{ scale: 1.1 }}
-										whileTap={{ scale: 0.9 }}
-									>
+									<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 										Dashboard <span className="sr-only">(current)</span>
 									</motion.div>
 								</li>
 							</Link>
 							<Link to="/myMovies" style={{ textDecoration: 'none' }}>
 								<li className="nav-item">
-									<motion.div
-										className="nav-link"
-										whileHover={{ scale: 1.1 }}
-										whileTap={{ scale: 0.9 }}
-									>
+									<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 										Library
 									</motion.div>
 								</li>
 							</Link>
 							<Link to="/compare" style={{ textDecoration: 'none' }}>
 								<li className="nav-item">
-									<motion.div
-										className="nav-link"
-										whileHover={{ scale: 1.1 }}
-										whileTap={{ scale: 0.9 }}
-									>
+									<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 										Compare
 									</motion.div>
 								</li>
