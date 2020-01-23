@@ -60,13 +60,13 @@ const Navbar = (props) => {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					{props.user && (
 						<ul className="navbar-nav mr-auto">
-							<Link to="/dashboard" style={{ textDecoration: 'none' }}>
+							{/* <Link to="/dashboard" style={{ textDecoration: 'none' }}>
 								<li className="nav-item active">
 									<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>
 										Dashboard <span className="sr-only">(current)</span>
 									</motion.div>
 								</li>
-							</Link>
+							</Link> */}
 							<Link to="/myMovies" style={{ textDecoration: 'none' }}>
 								<li className="nav-item">
 									<motion.div className="nav-link" whileTap={{ scale: 0.9 }}>

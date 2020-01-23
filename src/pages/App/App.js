@@ -108,9 +108,7 @@ class App extends React.Component {
 							<Route
 								path="/"
 								exact
-								render={(props) => (
-									<LandingPage {...props} testExpressConnection={this.testExpressConnection} />
-								)}
+								render={(props) => <LandingPage {...props} user={this.state.user} />}
 							/>
 							<Route
 								path="/myMovies"
