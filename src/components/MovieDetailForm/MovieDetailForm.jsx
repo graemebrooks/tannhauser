@@ -16,8 +16,14 @@ const Div = styled.div`
 		padding: 15px;
 	}
 	.btn-submit {
-			background: ${(props) => props.theme.primaryGreen};
-		}
+		background: ${(props) => props.theme.primaryGreen};
+	}
+	.rating {
+		display: ${(props) => (props.formData.hasSeen ? '' : 'none')};
+	}
+	.dateWatched {
+		display: ${(props) => (props.formData.hasSeen ? '' : 'none')};
+	}
 `;
 
 const MovieDetailForm = (props) => {
@@ -92,13 +98,13 @@ const MovieDetailForm = (props) => {
 			};
 
 	return (
-		<Div>
+		<Div formData={formData}>
 			<form>
 				<label className="checkbox">
 					<span>I have seen this movie </span>
 					<input onClick={onToggle} type="checkbox" name="hasSeen" defaultChecked={formData.hasSeen} />
 				</label>
-				<label className="">
+				<label className="dateWatched">
 					<span>Watched on: </span>
 					<input onChange={onFormChange} type="date" name="dateWatched" value={formData.dateWatched} />
 				</label>
@@ -111,7 +117,7 @@ const MovieDetailForm = (props) => {
 						defaultChecked={formData.wantToWatch}
 					/>
 				</label>
-				<label className="number">
+				<label className="number rating">
 					<span>Rating </span>
 					<input type="number" name="rating" onChange={onFormChange} value={formData.rating} />
 				</label>

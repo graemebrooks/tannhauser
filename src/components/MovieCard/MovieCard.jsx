@@ -19,7 +19,7 @@ const Div = styled.div`
 		color: ${(props) => props.getRatingColor(props.movie.userRating)};
 		margin-left: auto;
 		padding: 5px;
-		border: solid 3px ${(props) => props.getRatingColor(props.movie.userRating)};
+		border: ${(props) => props.movie.userRating ? 'solid 3px ' + props.getRatingColor(props.movie.userRating) : null};
 		border-radius: 5px;
 	}
 	.ratingContainer {
