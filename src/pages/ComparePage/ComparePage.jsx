@@ -66,7 +66,7 @@ const ComparePage = (props) => {
 		});
 	};
 
-	return !data.comparison.isComparing ? data.movies[0] ? data.isLoading ? (
+	return !data.comparison.isComparing ? data.movies[0].movieTitle ? data.isLoading ? (
 		<Loader />
 	) : (
 		<Div>
@@ -80,7 +80,7 @@ const ComparePage = (props) => {
 	) : (
 		<div>
 			<UserSubNav handleUserClick={handleUserClick} />
-			<p>Search a user!</p>
+			<h2>Search a user!</h2>
 		</div>
 	) : (
 		<Div>
