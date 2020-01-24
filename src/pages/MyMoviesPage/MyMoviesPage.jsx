@@ -49,7 +49,7 @@ const MyMoviesPage = (props) => {
 	return data.isLoading ? (
 		<Loader />
 	) : data.movies[0] ? (
-		<Div>
+		<Div> 
 			<MoviesSubNav
 				movies={props.movies}
 				value={props.value}

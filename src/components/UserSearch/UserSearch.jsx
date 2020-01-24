@@ -13,7 +13,7 @@ const Input = styled.input`
 	border: 2px solid ${(props) => props.theme.pulsarPurple};
 	border-radius: 5px;
 	color: white;
-	width: 60%;
+	width: 40%;
 	&:focus {
 		outline: none !important;
 		border: 2px solid ${(props) => props.theme.primaryGreen};

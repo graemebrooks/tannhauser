@@ -80,7 +80,7 @@ const ComparePage = (props) => {
 	) : (
 		<div>
 			<UserSubNav handleUserClick={handleUserClick} />
-			<h2>Search a user!</h2>
+			<h2>Search a user!</h2> 
 		</div>
 	) : (
 		<Div>
